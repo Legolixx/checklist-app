@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum para os itens técnicos
+enum EstadoCheck {
+  BOM
+  RUIM
+}
+
+model Client {
+  xata_id        String     @id @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)")) @unique(map: "_pgroll_new_Client_xata_id_key")
+  xata_version   Int        @default(0)
+  xata_createdat DateTime   @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime   @default(now()) @db.Timestamptz(6)
+
+  nome           String
+  telefone       String
+  email          String
+
+  checklists     CheckList[]
+}
+
+model Vehicle {
+  xata_id        String     @id @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)")) @unique(map: "_pgroll_new_Vehicle_xata_id_key")
+  xata_version   Int        @default(0)
+  xata_createdat DateTime   @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime   @default(now()) @db.Timestamptz(6)
+
+  marca          String
+  modelo         String
+  km             Int
+
+  checklists     CheckList[]
+}
+
+model CheckList {
+  xata_id                  String     @id @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)")) @unique(map: "_pgroll_new_CheckList_xata_id_key")
+  xata_version             Int        @default(0)
+  xata_createdat           DateTime   @default(now()) @db.Timestamptz(6)
+  xata_updatedat           DateTime   @default(now()) @db.Timestamptz(6)
+
+  createdBy                String     // Clerk ID do usuário
+  createdByName            String    // Clerk username
+
+  clientId                 String
+  vehicleId                String
+
+  client                   Client     @relation(fields: [clientId], references: [xata_id])
+  vehicle                  Vehicle    @relation(fields: [vehicleId], references: [xata_id])
+
+  nivelOleo                EstadoCheck
+  fluidoFreio              EstadoCheck
+  fluidoDirecao            EstadoCheck
+  fluidoArrefecimento      EstadoCheck
+  desgastePneu             EstadoCheck
+  calibragemPneus          EstadoCheck
+  lampadasDianteiras       EstadoCheck
+  lampadasTraseiras        EstadoCheck
+  fluidoLimpador           EstadoCheck
+  desgasteBorrachaLimpador EstadoCheck
+  correaAcessorios         EstadoCheck
+
+  observacoes              String?
+}
