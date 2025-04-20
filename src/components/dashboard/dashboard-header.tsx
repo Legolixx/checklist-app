@@ -11,7 +11,7 @@ export function DashboardHeader() {
       <div className="flex items-center gap-4 lg:gap-6">
         <div className="hidden lg:block">
           <Image
-            src="/hyundai_logo.png"
+            src="/Hyundai_logo.png"
             alt="Hyundai Logo"
             width={150}
             height={70}
