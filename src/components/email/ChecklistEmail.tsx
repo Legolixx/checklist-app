@@ -8,8 +8,8 @@ import {
   Section,
   Row,
   Column,
-  Img,
   Hr,
+  Img,
 } from "@react-email/components";
 
 interface ChecklistItem {
@@ -24,30 +24,20 @@ interface ChecklistEmailProps {
   observations?: string;
 }
 
-// Mapa de ícones baseado nos nomes dos itens
-const iconMap: Record<string, string> = {
-  nivelOleo: "/icons/oleo.png",
-  fluidoFreio: "/icons/freio-de-disco.png",
-  fluidoDirecao: "/icons/direcao.png",
-  fluidoArrefecimento: "/icons/liquido-de-arrefecimento.png",
-  desgastePneu: "/icons/pneu.png",
-  calibragemPneus: "/icons/pressao-do-pneu.png",
-  lampadasDianteiras: "/icons/lampada.png",
-  lampadasTraseiras: "/icons/lampada.png",
-  fluidoLimpador: "/icons/parabrisa.png",
-  desgasteBorrachaLimpador: "/icons/limpador.png",
-  correaAcessorios: "/icons/conjunto-de-engrenagens.png",
-};
-
 export const ChecklistEmail = ({
   customerName,
   vehicle,
   checklistItems,
   observations,
 }: ChecklistEmailProps) => {
-  // URL base para os ícones (ajuste conforme seu domínio ou servidor de produção)
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  
+
+  const formatStatus = (status: string) => {
+    const normalized = status.trim().toLowerCase();
+    if (normalized === "bom") return "✅";
+    if (normalized === "ruim") return "❌";
+    return status;
+  };
 
   return (
     <Html>
@@ -69,31 +59,15 @@ export const ChecklistEmail = ({
             <Heading style={{ ...heading, fontSize: 20 }}>
               Itens avaliados
             </Heading>
-            {checklistItems.map((item, i) => {
-              // Obter o caminho do ícone com base no nome do item
-              const iconPath = iconMap[item.name.toLowerCase()];
-              // Criar a URL completa do ícone
-              const iconUrl = iconPath ? `${baseUrl}${iconPath}` : "";
-
-              return (
-                <Row key={i} style={{ marginBottom: "10px" }}>
-                  <Column style={{ width: "40px" }}>
-                    {iconUrl && (
-                      <Img
-                      style={logo}
-                        src={iconUrl}
-                        alt={item.name}
-                      />
-                    )}
-                  </Column>
-                  <Column>
-                    <Text style={paragraph}>
-                      {item.name}: <strong>{item.status}</strong>
-                    </Text>
-                  </Column>
-                </Row>
-              );
-            })}
+            {checklistItems.map((item, i) => (
+              <Row key={i} style={{ marginBottom: "10px" }}>
+                <Column>
+                  <Text style={paragraph}>
+                    {item.name}: <strong>{formatStatus(item.status)}</strong>
+                  </Text>
+                </Column>
+              </Row>
+            ))}
           </Section>
 
           <Hr />
@@ -106,12 +80,16 @@ export const ChecklistEmail = ({
 
           <Hr />
 
-          <Text style={{ fontSize: 12, color: "#999", textAlign: "center" }}>
-            <Column style={{ width: "40px" }}>
-              <Img style={logo} src={`${baseUrl}/Hyundai_logo.png`} alt={"Hyundai Logo"} />
-            </Column>
-            Obrigado pelo atendimento! 🚗🔧
-          </Text>
+          <Section style={footer}>
+            <Img
+              style={footerLogo}
+              src={`${baseUrl}/Hyundai_logo.png`}
+              alt="Hyundai Logo"
+            />
+            <Text style={footerText}>
+              Obrigado pelo atendimento! 🚗🔧
+            </Text>
+          </Section>
         </Container>
       </Body>
     </Html>
@@ -145,10 +123,18 @@ const paragraph = {
   margin: "4px 0",
 };
 
-const logo = {
-  padding: "30px 20px",
-  width: "50px", // tamanho adequado para emails
+const footer = {
+  textAlign: "center" as const,
+  marginTop: "20px",
+};
+
+const footerLogo = {
+  width: "80px",
   height: "auto",
-  display: "block",
-  margin: "0 auto",
+  margin: "0 auto 10px",
+};
+
+const footerText = {
+  fontSize: 12,
+  color: "#999",
 };
