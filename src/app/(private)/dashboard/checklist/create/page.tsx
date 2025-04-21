@@ -10,7 +10,6 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import {
   FormField,
@@ -61,65 +60,124 @@ type FormData = z.infer<typeof fullSchema>;
 
 // --- Step components ---
 const StepClient = () => {
-  const { register } = useFormContext<FormData>();
+  const form = useFormContext<FormData>();
+
   return (
     <div className="space-y-4">
-      <div>
-        <Label htmlFor="name">Nome</Label>
-        <Input id="name" {...register("name")} />
-      </div>
-      <div>
-        <Label htmlFor="phone">Telefone</Label>
-        <Input id="phone" {...register("phone")} />
-      </div>
-      <div>
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" {...register("email")} />
-      </div>
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field }) => (
+          <div>
+            <FormLabel>Nome</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="phone"
+        render={({ field }) => (
+          <div>
+            <FormLabel>Telefone</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field }) => (
+          <div>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
     </div>
   );
 };
 
+
 const StepVehicle = () => {
-  const { register, watch } = useFormContext<FormData>();
-  const selectedBrand = watch("brand");
+  const form = useFormContext<FormData>();
+  const selectedBrand = form.watch("brand");
   const models = brandModels[selectedBrand] || [];
+
   return (
     <div className="space-y-4">
-      <div>
-        <Label htmlFor="brand">Marca</Label>
-        <select
-          id="brand"
-          {...register("brand")}
-          className="w-full rounded border px-2 py-1"
-        >
-          <option value="">Selecione uma marca</option>
-          {Object.keys(brandModels).map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <Label htmlFor="model">Modelo</Label>
-        <select
-          id="model"
-          {...register("model")}
-          className="w-full rounded border px-2 py-1"
-        >
-          <option value="">Selecione um modelo</option>
-          {models.map((m) => (
-            <option key={m} value={m}>
-              {m}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <Label htmlFor="km">KM</Label>
-        <Input id="km" {...register("km")} />
-      </div>
+      <FormField
+        control={form.control}
+        name="brand"
+        render={({ field }) => (
+          <div>
+            <FormLabel>Marca</FormLabel>
+            <FormControl>
+              <select
+                {...field}
+                className="w-full rounded border px-2 py-1"
+              >
+                <option value="">Selecione uma marca</option>
+                {Object.keys(brandModels).map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
+              </select>
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="model"
+        render={({ field }) => (
+          <div>
+            <FormLabel>Modelo</FormLabel>
+            <FormControl>
+              <select
+                {...field}
+                className="w-full rounded border px-2 py-1"
+              >
+                <option value="">Selecione um modelo</option>
+                {models.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="km"
+        render={({ field }) => (
+          <div>
+            <FormLabel>KM</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormMessage />
+          </div>
+        )}
+      />
     </div>
   );
 };
@@ -267,18 +325,31 @@ const sendDataToAPI = async (
   router: ReturnType<typeof useRouter>
 ) => {
   try {
+    // 1. Envia os dados pro banco
     const res = await fetch("/api/checklists/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error(`Status ${res.status}`);
-    await res.json();
+
+    if (!res.ok) throw new Error(`Erro no banco: ${res.status}`);
+
+    // 2. Agora envia o email com Resend
+    const emailRes = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!emailRes.ok) throw new Error(`Erro no email: ${emailRes.status}`);
+
+    // 3. Redireciona se deu tudo certo
     router.push("/dashboard/checklist");
   } catch (err) {
     console.error("Erro ao enviar dados:", err);
   }
 };
+
 
 // --- Main component ---
 export default function CheckListPage() {

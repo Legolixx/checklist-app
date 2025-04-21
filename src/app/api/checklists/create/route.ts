@@ -10,7 +10,6 @@ export async function POST(req: Request) {
 
   try {
     const data = await req.json();
-    console.log('🚀 Dados recebidos:', data);
 
     const client = await prisma.client.create({
       data: {
