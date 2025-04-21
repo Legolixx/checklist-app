@@ -47,6 +47,7 @@ export const ChecklistEmail = ({
 }: ChecklistEmailProps) => {
   // URL base para os ícones (ajuste conforme seu domínio ou servidor de produção)
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  
 
   return (
     <Html>
@@ -79,11 +80,9 @@ export const ChecklistEmail = ({
                   <Column style={{ width: "40px" }}>
                     {iconUrl && (
                       <Img
+                      style={logo}
                         src={iconUrl}
                         alt={item.name}
-                        width="24"
-                        height="24"
-                        style={{ verticalAlign: "middle" }}
                       />
                     )}
                   </Column>
@@ -146,4 +145,10 @@ const paragraph = {
   margin: "4px 0",
 };
 
-const logo = { padding: "30px 20px" };
+const logo = {
+  padding: "30px 20px",
+  width: "50px", // tamanho adequado para emails
+  height: "auto",
+  display: "block",
+  margin: "0 auto",
+};
