@@ -46,7 +46,7 @@ import {
     observations,
   }: ChecklistEmailProps) => {
     // URL base para os ícones (ajuste conforme seu domínio ou servidor de produção)
-    const baseUrl = 'https://checklisthyundai.vercel.app';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   
     return (
       <Html>
@@ -106,6 +106,16 @@ import {
             <Hr />
   
             <Text style={{ fontSize: 12, color: '#999', textAlign: 'center' }}>
+
+            <Column style={{ width: '40px' }}>
+            <Img
+             src={'http://localhost:3000/Hyundai_logo.png'}
+             alt={"Hyundai Logo"}
+             width="24"
+             height="24"
+             style={{ verticalAlign: 'middle' }}
+            />
+            </Column>
               Obrigado pelo atendimento! 🚗🔧
             </Text>
           </Container>
