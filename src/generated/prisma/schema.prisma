@@ -52,8 +52,8 @@ model CheckList {
   clientId  String
   vehicleId String
 
-  client  Client  @relation(fields: [clientId], references: [xata_id])
-  vehicle Vehicle @relation(fields: [vehicleId], references: [xata_id])
+  client  Client  @relation(fields: [clientId], references: [xata_id], onDelete: Cascade)
+  vehicle Vehicle @relation(fields: [vehicleId], references: [xata_id], onDelete: Cascade)
 
   nivelOleo                EstadoCheck
   fluidoFreio              EstadoCheck

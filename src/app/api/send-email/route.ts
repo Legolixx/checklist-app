@@ -67,9 +67,6 @@ export async function POST(req: Request) {
       })),
     };
 
-    // Log the transformed data for debugging (optional)
-    console.log(transformedData);
-
     // Destructure the transformed data
     const { name, email, model, km, observations, checklistItems } = transformedData;
 

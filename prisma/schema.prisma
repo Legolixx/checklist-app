@@ -47,13 +47,13 @@ model CheckList {
   xata_updatedat           DateTime   @default(now()) @db.Timestamptz(6)
 
   createdBy                String     // Clerk ID do usuário
-  createdByName            String    // Clerk username
+  createdByName            String     // Clerk username
 
   clientId                 String
   vehicleId                String
 
-  client                   Client     @relation(fields: [clientId], references: [xata_id])
-  vehicle                  Vehicle    @relation(fields: [vehicleId], references: [xata_id])
+  client                   Client     @relation(fields: [clientId], references: [xata_id], onDelete: Cascade)
+  vehicle                  Vehicle    @relation(fields: [vehicleId], references: [xata_id], onDelete: Cascade)
 
   nivelOleo                EstadoCheck
   fluidoFreio              EstadoCheck
