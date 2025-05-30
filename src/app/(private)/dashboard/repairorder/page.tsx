@@ -26,7 +26,7 @@ export default function HomePage() {
 
       <div className="mt-6">
         {orders.map((os) => (
-          <RepairOrderCard key={os.CODIGO_OS} os={os} />
+          <RepairOrderCard key={os.CODIGO_OS} order={os} />
         ))}
       </div>
     </div>
