@@ -1,0 +1,1506 @@
+[
+  {
+    "code": "B05AM01001",
+    "name": "Ulsan - Rio Branco"
+  },
+  {
+    "code": "B05AM01002",
+    "name": "Ulsan - Rio Branco"
+  },
+  {
+    "code": "B05AM02001",
+    "name": "Cycosa - Maceio (Centro)"
+  },
+  {
+    "code": "B05AM02002",
+    "name": "Cycosa - Maceio (Praia)"
+  },
+  {
+    "code": "B05AM03001",
+    "name": "Pole Position - Manaus"
+  },
+  {
+    "code": "B05AM03002",
+    "name": "Pateo - Manaus"
+  },
+  {
+    "code": "B05AM03003",
+    "name": "Pole Position - Manaus"
+  },
+  {
+    "code": "B05AM04001",
+    "name": "Miso Motors - Macapá"
+  },
+  {
+    "code": "B05AM05001",
+    "name": "GTS - Barreiras"
+  },
+  {
+    "code": "B05AM05002",
+    "name": "Aikon - Vitoria da Conquista"
+  },
+  {
+    "code": "B05AM05003",
+    "name": "Pateo - Salvador"
+  },
+  {
+    "code": "B05AM05004",
+    "name": "CAOA - Lauro de Freitas"
+  },
+  {
+    "code": "B05AM05005",
+    "name": "Autovix - Feira de Santana"
+  },
+  {
+    "code": "B05AM05006",
+    "name": "Asam Motors - Teixeira de Freitas"
+  },
+  {
+    "code": "B05AM05007",
+    "name": "Grande Coreia - Salvador"
+  },
+  {
+    "code": "B05AM05008",
+    "name": "CAOA - Lauro de Freitas"
+  },
+  {
+    "code": "B05AM05009",
+    "name": "Pateo - Feira de Santana"
+  },
+  {
+    "code": "B05AM05010",
+    "name": "Aikon - Itabuna"
+  },
+  {
+    "code": "B05AM05011",
+    "name": "Orvel - Teixeira de Freitas"
+  },
+  {
+    "code": "B05AM05012",
+    "name": "Master - Barreiras"
+  },
+  {
+    "code": "B05AM05013",
+    "name": "Master - Jacobina"
+  },
+  {
+    "code": "B05AM06001",
+    "name": "Grande Coreia - Fortaleza"
+  },
+  {
+    "code": "B05AM06002",
+    "name": "Via Norte - Sobral"
+  },
+  {
+    "code": "B05AM06003",
+    "name": "Terra Santa - Juazeiro do Norte"
+  },
+  {
+    "code": "B05AM06004",
+    "name": "Smaff - Fortaleza"
+  },
+  {
+    "code": "B05AM06005",
+    "name": "Grande Coreia - Fortaleza II"
+  },
+  {
+    "code": "B05AM06006",
+    "name": "Caoa - Fortaleza"
+  },
+  {
+    "code": "B05AM06007",
+    "name": "Caoa - Fortaleza"
+  },
+  {
+    "code": "B05AM06010",
+    "name": "Terra Santa - Juazeiro do Norte"
+  },
+  {
+    "code": "B05AM07001",
+    "name": "Smaff - Brasilia"
+  },
+  {
+    "code": "B05AM07002",
+    "name": "Smaff - Brasilia Asa Norte"
+  },
+  {
+    "code": "B05AM07003",
+    "name": "Saga - Brasília"
+  },
+  {
+    "code": "B05AM07004",
+    "name": "Saga - Taguatinga"
+  },
+  {
+    "code": "B05AM07005",
+    "name": "Saga - Brasilia"
+  },
+  {
+    "code": "B05AM07006",
+    "name": "CAOA - Brasília Asa Norte"
+  },
+  {
+    "code": "B05AM08001",
+    "name": "Prime - Serra"
+  },
+  {
+    "code": "B05AM08002",
+    "name": "Tai - Vitoria"
+  },
+  {
+    "code": "B05AM08003",
+    "name": "Prime - Cachoeiro"
+  },
+  {
+    "code": "B05AM08004",
+    "name": "Prime - Linhares"
+  },
+  {
+    "code": "B05AM08005",
+    "name": "Prime - Vila Velha"
+  },
+  {
+    "code": "B05AM08006",
+    "name": "Tai - Colatina"
+  },
+  {
+    "code": "B05AM09001",
+    "name": "Maudi - Itumbiara"
+  },
+  {
+    "code": "B05AM09002",
+    "name": "Nisa - Aparecida Goiânia"
+  },
+  {
+    "code": "B05AM09003",
+    "name": "Premier - Catalão"
+  },
+  {
+    "code": "B05AM09004",
+    "name": "Toksan - Valparaiso de  Goias"
+  },
+  {
+    "code": "B05AM09005",
+    "name": "Saga - Anapolis"
+  },
+  {
+    "code": "B05AM09006",
+    "name": "Saga - Goiania"
+  },
+  {
+    "code": "B05AM09007",
+    "name": "Junco - Sao Luis de Montes Belos"
+  },
+  {
+    "code": "B05AM09008",
+    "name": "Maudi - Rio Verde"
+  },
+  {
+    "code": "B05AM09009",
+    "name": "Saga - Goiania II"
+  },
+  {
+    "code": "B05AM09010",
+    "name": "Saga Goiania"
+  },
+  {
+    "code": "B05AM09011",
+    "name": "Saga - Goiânia"
+  },
+  {
+    "code": "B05AM09012",
+    "name": "Saga - Anapolis"
+  },
+  {
+    "code": "B05AM09013",
+    "name": "Nisa - Goiania"
+  },
+  {
+    "code": "B05AM09014",
+    "name": "Urca - Rio Verde"
+  },
+  {
+    "code": "B05AM09015",
+    "name": "Urca - Itumbiara"
+  },
+  {
+    "code": "B05AM09016",
+    "name": "Nasa - São Luís de Montes Belos"
+  },
+  {
+    "code": "B05AM09017",
+    "name": "Urca - Catalão"
+  },
+  {
+    "code": "B05AM09018",
+    "name": "Triauto - Catalão"
+  },
+  {
+    "code": "B05AM10001",
+    "name": "Gran Car - Sao Luis"
+  },
+  {
+    "code": "B05AM10002",
+    "name": "Pateo - Sao Luis (Calhau)"
+  },
+  {
+    "code": "B05AM10003",
+    "name": "Privillege - Imperatriz"
+  },
+  {
+    "code": "B05AM10004",
+    "name": "Pateo - Sao Luis (Tirirical)"
+  },
+  {
+    "code": "B05AM10005",
+    "name": "Pateo - São Luis II"
+  },
+  {
+    "code": "B05AM11001",
+    "name": "Soma - Guaxupe"
+  },
+  {
+    "code": "B05AM11002",
+    "name": "Urca - Uberlandia"
+  },
+  {
+    "code": "B05AM11003",
+    "name": "Absolute - Divinopolis"
+  },
+  {
+    "code": "B05AM11004",
+    "name": "Nagoya - Uba"
+  },
+  {
+    "code": "B05AM11005",
+    "name": "Profissional - Pocos de Caldas"
+  },
+  {
+    "code": "B05AM11006",
+    "name": "Profissional - Pouso Alegre"
+  },
+  {
+    "code": "B05AM11007",
+    "name": "Tex - Varginha"
+  },
+  {
+    "code": "B05AM11008",
+    "name": "Toksu  - Barbacena"
+  },
+  {
+    "code": "B05AM11009",
+    "name": "Toksu - Juiz de Fora"
+  },
+  {
+    "code": "B05AM11010",
+    "name": "Imotors - Juiz de Fora"
+  },
+  {
+    "code": "B05AM11011",
+    "name": "Mira - Montes Claros"
+  },
+  {
+    "code": "B05AM11012",
+    "name": "Mazam - Sete Lagoas"
+  },
+  {
+    "code": "B05AM11013",
+    "name": "Pacific - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11014",
+    "name": "Pacific - Contagem"
+  },
+  {
+    "code": "B05AM11015",
+    "name": "Rio Grande - Passos"
+  },
+  {
+    "code": "B05AM11016",
+    "name": "Vital  - Governador Valadares"
+  },
+  {
+    "code": "B05AM11017",
+    "name": "Vital - Ipatinga"
+  },
+  {
+    "code": "B05AM11018",
+    "name": "CAOA - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11019",
+    "name": "Urca - Uberaba"
+  },
+  {
+    "code": "B05AM11020",
+    "name": "Tai - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11021",
+    "name": "Carbel - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11022",
+    "name": "Soma - Pouso Alegre"
+  },
+  {
+    "code": "B05AM11023",
+    "name": "Caoa - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11024",
+    "name": "Soma - Poços de Caldas"
+  },
+  {
+    "code": "B05AM11025",
+    "name": "Soma - Varginha"
+  },
+  {
+    "code": "B05AM11027",
+    "name": "Pacific - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11028",
+    "name": "Pacific - Contagem"
+  },
+  {
+    "code": "B05AM11029",
+    "name": "Toksu - Pouso Alegre"
+  },
+  {
+    "code": "B05AM11030",
+    "name": "Toksu - Varginha"
+  },
+  {
+    "code": "B05AM11031",
+    "name": "Vime - Guaxupé"
+  },
+  {
+    "code": "B05AM11032",
+    "name": "Move - Divinópolis"
+  },
+  {
+    "code": "B05AM11033",
+    "name": "Tai - Muriaé"
+  },
+  {
+    "code": "B05AM11034",
+    "name": "Urca - Patos de Minas"
+  },
+  {
+    "code": "B05AM11035",
+    "name": "Autoville - Belo Horizonte"
+  },
+  {
+    "code": "B05AM11036",
+    "name": "Autoville - Contagem"
+  },
+  {
+    "code": "B05AM11037",
+    "name": "Tecar - Divinópolis"
+  },
+  {
+    "code": "B05AM11038",
+    "name": "Autoville - Olhos d'agua (End. Entr"
+  },
+  {
+    "code": "B05AM11039",
+    "name": "Ritmo - Passos"
+  },
+  {
+    "code": "B05AM12001",
+    "name": "Golden Motors - Dourados"
+  },
+  {
+    "code": "B05AM12002",
+    "name": "Ulsan - Calogeras"
+  },
+  {
+    "code": "B05AM12003",
+    "name": "Golden Motors - Três Lagoas"
+  },
+  {
+    "code": "B05AM12004",
+    "name": "Ulsan - Campo Grande"
+  },
+  {
+    "code": "B05AM12005",
+    "name": "Ulsan - Campo Grande II"
+  },
+  {
+    "code": "B05AM13001",
+    "name": "Saga - Varzea Grande"
+  },
+  {
+    "code": "B05AM13002",
+    "name": "R3 - Rondonopolis"
+  },
+  {
+    "code": "B05AM13003",
+    "name": "Cometa - Sinop"
+  },
+  {
+    "code": "B05AM13004",
+    "name": "Saga - Varzea Grande"
+  },
+  {
+    "code": "B05AM13005",
+    "name": "Saga - Cuiabá"
+  },
+  {
+    "code": "B05AM13006",
+    "name": "Cometa - Rondonópolis"
+  },
+  {
+    "code": "B05AM13300",
+    "name": "Caoa - Cuiabá"
+  },
+  {
+    "code": "B05AM14001",
+    "name": "Privillege - Maraba"
+  },
+  {
+    "code": "B05AM14002",
+    "name": "CAOA - Belem"
+  },
+  {
+    "code": "B05AM14003",
+    "name": "Unique - Ananindeua"
+  },
+  {
+    "code": "B05AM14004",
+    "name": "CAOA - Belém"
+  },
+  {
+    "code": "B05AM14005",
+    "name": "Privillege - Marabá"
+  },
+  {
+    "code": "B05AM14006",
+    "name": "Miso - Santarém"
+  },
+  {
+    "code": "B05AM14007",
+    "name": "Grande Coreia - Belém"
+  },
+  {
+    "code": "B05AM14008",
+    "name": "Grande Coreia - Castanhal"
+  },
+  {
+    "code": "B05AM14009",
+    "name": "Grande Coreia - Montes Claros"
+  },
+  {
+    "code": "B05AM14010",
+    "name": "Privillege - Parauapebas"
+  },
+  {
+    "code": "B05AM15001",
+    "name": "CAOA - Campina Grande"
+  },
+  {
+    "code": "B05AM15002",
+    "name": "CAOA - Campina Grande"
+  },
+  {
+    "code": "B05AM15003",
+    "name": "Pateo - João Pessoa"
+  },
+  {
+    "code": "B05AM15004",
+    "name": "JPN - Patos"
+  },
+  {
+    "code": "B05AM16001",
+    "name": "Autorac - Caruaru"
+  },
+  {
+    "code": "B05AM16002",
+    "name": "Autorac - Petrolina"
+  },
+  {
+    "code": "B05AM16003",
+    "name": "Pateo - Olinda"
+  },
+  {
+    "code": "B05AM16004",
+    "name": "Pateo - Recife"
+  },
+  {
+    "code": "B05AM16005",
+    "name": "Autorac - Caruaru (Service)"
+  },
+  {
+    "code": "B05AM16006",
+    "name": "Autorac - Petrolina (Service)"
+  },
+  {
+    "code": "B05AM16007",
+    "name": "CAOA - RECIFE"
+  },
+  {
+    "code": "B05AM16008",
+    "name": "CAOA - Recife"
+  },
+  {
+    "code": "B05AM16009",
+    "name": "JPN - Garanhuns"
+  },
+  {
+    "code": "B05AM16010",
+    "name": "Pateo - Jaboatão"
+  },
+  {
+    "code": "B05AM16011",
+    "name": "Pateo - Bongi - End. de Entrega"
+  },
+  {
+    "code": "B05AM16300",
+    "name": "Caoa - Jaboatão"
+  },
+  {
+    "code": "B05AM17001",
+    "name": "Brasil  - Teresina"
+  },
+  {
+    "code": "B05AM17002",
+    "name": "Green City - Teresina"
+  },
+  {
+    "code": "B05AM17003",
+    "name": "Green City - Parnaíba"
+  },
+  {
+    "code": "B05AM17004",
+    "name": "Green City - Teresina II"
+  },
+  {
+    "code": "B05AM18001",
+    "name": "Slavel - Cascavel"
+  },
+  {
+    "code": "B05AM18002",
+    "name": "Slavel - Curitiba (Alto da Rua XV)"
+  },
+  {
+    "code": "B05AM18003",
+    "name": "Slavel - Foz do Iguaçu"
+  },
+  {
+    "code": "B05AM18004",
+    "name": "Slavel - Guarapuava"
+  },
+  {
+    "code": "B05AM18005",
+    "name": "Slavel - Pato Branco"
+  },
+  {
+    "code": "B05AM18006",
+    "name": "Slavel - S J dos Pinhais"
+  },
+  {
+    "code": "B05AM18007",
+    "name": "Slavel - Toledo"
+  },
+  {
+    "code": "B05AM18008",
+    "name": "Lovat - Londrina"
+  },
+  {
+    "code": "B05AM18009",
+    "name": "Lovat - Maringa"
+  },
+  {
+    "code": "B05AM18010",
+    "name": "Santa Fe - Francisco Beltrao"
+  },
+  {
+    "code": "B05AM18011",
+    "name": "Ibrauto - Ponta Grossa"
+  },
+  {
+    "code": "B05AM18012",
+    "name": "Servopa - Curitiba"
+  },
+  {
+    "code": "B05AM18013",
+    "name": "Slavel - Curitiba (Novo Mundo)"
+  },
+  {
+    "code": "B05AM18014",
+    "name": "Santa Fe - Pato Branco"
+  },
+  {
+    "code": "B05AM18015",
+    "name": "Portela - Guarapuava"
+  },
+  {
+    "code": "B05AM18016",
+    "name": "Zendai - Foz do Iguaçu"
+  },
+  {
+    "code": "B05AM18017",
+    "name": "Zendai - Toledo"
+  },
+  {
+    "code": "B05AM18018",
+    "name": "Servopa - Curitiba II"
+  },
+  {
+    "code": "B05AM18019",
+    "name": "Open - Cascavel"
+  },
+  {
+    "code": "B05AM18020",
+    "name": "Caoa - Curitiba"
+  },
+  {
+    "code": "B05AM18021",
+    "name": "Caoa - Curitiba (Alto da Rua XV)"
+  },
+  {
+    "code": "B05AM18022",
+    "name": "Caoa - Curitiba (Novo Mundo)"
+  },
+  {
+    "code": "B05AM18023",
+    "name": "Caoa - S.J. dos Pinhais"
+  },
+  {
+    "code": "B05AM18024",
+    "name": "Bari - Guarapuava"
+  },
+  {
+    "code": "B05AM18025",
+    "name": "Bari - Ponta Grossa"
+  },
+  {
+    "code": "B05AM18026",
+    "name": "Sevec Curitiba"
+  },
+  {
+    "code": "B05AM18027",
+    "name": "Open - Foz do Iguaçu"
+  },
+  {
+    "code": "B05AM18028",
+    "name": "Open - Umuarama"
+  },
+  {
+    "code": "B05AM19001",
+    "name": "Itavema - Duque de Caxias"
+  },
+  {
+    "code": "B05AM19003",
+    "name": "Itavema - Sao Joao de Meriti"
+  },
+  {
+    "code": "B05AM19004",
+    "name": "Ago - Barra da Tijuca"
+  },
+  {
+    "code": "B05AM19005",
+    "name": "Ago - Sao Conrado"
+  },
+  {
+    "code": "B05AM19008",
+    "name": "Tai - Campos dos Goytacazes"
+  },
+  {
+    "code": "B05AM19009",
+    "name": "AMX - Niteroi"
+  },
+  {
+    "code": "B05AM19010",
+    "name": "Dangun - Nova Iguacu"
+  },
+  {
+    "code": "B05AM19011",
+    "name": "Korvel - Macae"
+  },
+  {
+    "code": "B05AM19012",
+    "name": "CAOA - Niteroi"
+  },
+  {
+    "code": "B05AM19013",
+    "name": "CAOA - Botafogo"
+  },
+  {
+    "code": "B05AM19014",
+    "name": "CAOA - Barra"
+  },
+  {
+    "code": "B05AM19015",
+    "name": "Graffiti - Itaperuna"
+  },
+  {
+    "code": "B05AM19016",
+    "name": "Via VR - Volta Redonda"
+  },
+  {
+    "code": "B05AM19017",
+    "name": "Itavema - RJ (Campo Grande)"
+  },
+  {
+    "code": "B05AM19018",
+    "name": "CAOA - Barra"
+  },
+  {
+    "code": "B05AM19019",
+    "name": "CAOA - Niteroi"
+  },
+  {
+    "code": "B05AM19020",
+    "name": "Itavema - Macaé"
+  },
+  {
+    "code": "B05AM19021",
+    "name": "Ago - Barra da Tijuca (II)"
+  },
+  {
+    "code": "B05AM19022",
+    "name": "Itavema - Meier"
+  },
+  {
+    "code": "B05AM19023",
+    "name": "Tai - Campos dos Goytacazes"
+  },
+  {
+    "code": "B05AM19024",
+    "name": "Via Imperial - Petrópolis"
+  },
+  {
+    "code": "B05AM19026",
+    "name": "Leauto Rio Han - Nova Iguaçu"
+  },
+  {
+    "code": "B05AM19027",
+    "name": "Via Imperial - Petrópolis (Service)"
+  },
+  {
+    "code": "B05AM19028",
+    "name": "Caoa - Valqueire"
+  },
+  {
+    "code": "B05AM19029",
+    "name": "Caoa - Barra II"
+  },
+  {
+    "code": "B05AM19030",
+    "name": "Montreal - Macaé"
+  },
+  {
+    "code": "B05AM19031",
+    "name": "CAOA - Tijuca"
+  },
+  {
+    "code": "B05AM19032",
+    "name": "Leauto Rio Han Rio de Janeiro"
+  },
+  {
+    "code": "B05AM19033",
+    "name": "Vime - Poços de Caldas"
+  },
+  {
+    "code": "B05AM19034",
+    "name": "Cometa - Tangará da Serra"
+  },
+  {
+    "code": "B05AM19035",
+    "name": "Unique Boa Vista"
+  },
+  {
+    "code": "B05AM19036",
+    "name": "JPN - Arapiraca"
+  },
+  {
+    "code": "B05AM19037",
+    "name": "Geração - Rio do Sul"
+  },
+  {
+    "code": "B05AM19038",
+    "name": "Top Motors - Ourinhos"
+  },
+  {
+    "code": "B05AM19039",
+    "name": "Caminho - Catanduva"
+  },
+  {
+    "code": "B05AM19040",
+    "name": "Andreta - Rio Claro"
+  },
+  {
+    "code": "B05AM19041",
+    "name": "Caoa - NorteShopping"
+  },
+  {
+    "code": "B05AM19042",
+    "name": "Saga - Centro de Reparo Tecnico"
+  },
+  {
+    "code": "B05AM19043",
+    "name": "Unique - Ananindeua (Entrega)"
+  },
+  {
+    "code": "B05AM19044",
+    "name": "Terra Santa - Aracaju"
+  },
+  {
+    "code": "B05AM19045",
+    "name": "Gala - Bagé"
+  },
+  {
+    "code": "B05AM19046",
+    "name": "Montreal - Cabo Frio"
+  },
+  {
+    "code": "B05AM19047",
+    "name": "Granday - Endereço de Entrega"
+  },
+  {
+    "code": "B05AM19048",
+    "name": "Itavema Nova Iguaçú - End. Entrega"
+  },
+  {
+    "code": "B05AM19049",
+    "name": "CAOA Vargem Grande - End. Entrega"
+  },
+  {
+    "code": "B05AM19050",
+    "name": "CAOA - Jacarepagua"
+  },
+  {
+    "code": "B05AM19051",
+    "name": "Leauto Rio Han - Coelho Neto (CDP)"
+  },
+  {
+    "code": "B05AM19052",
+    "name": "Itavema Riachao - End. Entrega"
+  },
+  {
+    "code": "B05AM20001",
+    "name": "Mevos - Parnamirim"
+  },
+  {
+    "code": "B05AM20002",
+    "name": "Terra Santa - Mossoro"
+  },
+  {
+    "code": "B05AM20003",
+    "name": "Terra Santa - Natal"
+  },
+  {
+    "code": "B05AM21001",
+    "name": "Saga - Porto Velho"
+  },
+  {
+    "code": "B05AM21002",
+    "name": "Cometa - Ji Parana"
+  },
+  {
+    "code": "B05AM21003",
+    "name": "Saga - Porto Velho"
+  },
+  {
+    "code": "B05AM21004",
+    "name": "Ulsan - Vilhena"
+  },
+  {
+    "code": "B05AM22001",
+    "name": "Koryo - Boa Vista"
+  },
+  {
+    "code": "B05AM23001",
+    "name": "Comvesa  - Lajeado"
+  },
+  {
+    "code": "B05AM23002",
+    "name": "Comvesa - Santa Cruz do Sul"
+  },
+  {
+    "code": "B05AM23003",
+    "name": "Servopa - Porto Alegre (Azenha)"
+  },
+  {
+    "code": "B05AM23004",
+    "name": "CarHouse - Porto Alegre"
+  },
+  {
+    "code": "B05AM23005",
+    "name": "CAOA - Caxias do Sul"
+  },
+  {
+    "code": "B05AM23006",
+    "name": "Servopa - Novo Hamburgo"
+  },
+  {
+    "code": "B05AM23007",
+    "name": "Servopa - Canoas"
+  },
+  {
+    "code": "B05AM23008",
+    "name": "Carhouse - Santa Maria"
+  },
+  {
+    "code": "B05AM23009",
+    "name": "Gala - Pelotas"
+  },
+  {
+    "code": "B05AM23011",
+    "name": "CAOA - Caxias do Sul"
+  },
+  {
+    "code": "B05AM23012",
+    "name": "Carway - Cachoeirinha"
+  },
+  {
+    "code": "B05AM23014",
+    "name": "Servopa - Bento Gonçalves"
+  },
+  {
+    "code": "B05AM23015",
+    "name": "Gambatto - Passo Fundo"
+  },
+  {
+    "code": "B05AM23016",
+    "name": "Carhouse - Osório"
+  },
+  {
+    "code": "B05AM23017",
+    "name": "Carhouse - Santa Cruz do Sul"
+  },
+  {
+    "code": "B05AM23018",
+    "name": "Carhouse - Lajeado"
+  },
+  {
+    "code": "B05AM23019",
+    "name": "Cordial - Erechim"
+  },
+  {
+    "code": "B05AM23020",
+    "name": "Car House - Canoas"
+  },
+  {
+    "code": "B05AM23021",
+    "name": "Iesa - Ijuí"
+  },
+  {
+    "code": "B05AM23300",
+    "name": "Caoa - Passo Fundo"
+  },
+  {
+    "code": "B05AM24001",
+    "name": "Atual - Ararangua"
+  },
+  {
+    "code": "B05AM24002",
+    "name": "Atual - Criciuma"
+  },
+  {
+    "code": "B05AM24003",
+    "name": "Atual - Tubarao"
+  },
+  {
+    "code": "B05AM24004",
+    "name": "Colussi - Cacador"
+  },
+  {
+    "code": "B05AM24005",
+    "name": "Colussi - Lages"
+  },
+  {
+    "code": "B05AM24006",
+    "name": "Geração - Brusque"
+  },
+  {
+    "code": "B05AM24007",
+    "name": "Geracao - Sao Jose"
+  },
+  {
+    "code": "B05AM24008",
+    "name": "Gambatto - Chapeco"
+  },
+  {
+    "code": "B05AM24010",
+    "name": "CAOA - Florianopolis"
+  },
+  {
+    "code": "B05AM24011",
+    "name": "Colussi - Concordia"
+  },
+  {
+    "code": "B05AM24012",
+    "name": "Bari - Blumenau"
+  },
+  {
+    "code": "B05AM24013",
+    "name": "Bari - Joinville"
+  },
+  {
+    "code": "B05AM24014",
+    "name": "Bari - Itajai"
+  },
+  {
+    "code": "B05AM24015",
+    "name": "Bari - Balneario Camboriu"
+  },
+  {
+    "code": "B05AM24016",
+    "name": "CAOA - Florianopolis"
+  },
+  {
+    "code": "B05AM24017",
+    "name": "Geracao - Lages"
+  },
+  {
+    "code": "B05AM24018",
+    "name": "Gambatto - Chapeco"
+  },
+  {
+    "code": "B05AM24019",
+    "name": "Cordial - Concórdia"
+  },
+  {
+    "code": "B05AM24020",
+    "name": "Cordial - Caçador"
+  },
+  {
+    "code": "B05AM24021",
+    "name": "CAOA - Florianopolis"
+  },
+  {
+    "code": "B05AM24022",
+    "name": "Geração - Ilha"
+  },
+  {
+    "code": "B05AM25001",
+    "name": "Samam - Aracaju"
+  },
+  {
+    "code": "B05AM26001",
+    "name": "Granday - Carrao"
+  },
+  {
+    "code": "B05AM26002",
+    "name": "Hymax - Mogi Guacu"
+  },
+  {
+    "code": "B05AM26003",
+    "name": "Sinal - Barueri"
+  },
+  {
+    "code": "B05AM26004",
+    "name": "Nobre - Mogi das Cruzes"
+  },
+  {
+    "code": "B05AM26005",
+    "name": "Grand Brasil -  Guarulhos"
+  },
+  {
+    "code": "B05AM26006",
+    "name": "Dapevel - Praia Grande"
+  },
+  {
+    "code": "B05AM26007",
+    "name": "Soliva - Aparecida"
+  },
+  {
+    "code": "B05AM26008",
+    "name": "Future - Atibaia"
+  },
+  {
+    "code": "B05AM26009",
+    "name": "Future - Braganca Paulista"
+  },
+  {
+    "code": "B05AM26010",
+    "name": "Top Motors - Bauru"
+  },
+  {
+    "code": "B05AM26011",
+    "name": "Andreta - Campinas"
+  },
+  {
+    "code": "B05AM26012",
+    "name": "Aversa - Piracicaba (Santa Rosa)"
+  },
+  {
+    "code": "B05AM26013",
+    "name": "Abrão Reze - Sorocaba"
+  },
+  {
+    "code": "B05AM26014",
+    "name": "New - Ribeirao Preto"
+  },
+  {
+    "code": "B05AM26015",
+    "name": "Dapevel - Santos"
+  },
+  {
+    "code": "B05AM26016",
+    "name": "Aversa - Piracicaba (Agua Santa)"
+  },
+  {
+    "code": "B05AM26017",
+    "name": "CAOA  - Aracatuba"
+  },
+  {
+    "code": "B05AM26018",
+    "name": "Abrão Reze - Itapetininga"
+  },
+  {
+    "code": "B05AM26019",
+    "name": "CAOA - Campinas Trevo"
+  },
+  {
+    "code": "B05AM26020",
+    "name": "CAOA - Itu"
+  },
+  {
+    "code": "B05AM26021",
+    "name": "CAOA - Marilia"
+  },
+  {
+    "code": "B05AM26022",
+    "name": "CAOA - Presidente Prudente"
+  },
+  {
+    "code": "B05AM26023",
+    "name": "CAOA - Sao Bernardo"
+  },
+  {
+    "code": "B05AM26024",
+    "name": "CAOA - S. J. dos Campos"
+  },
+  {
+    "code": "B05AM26025",
+    "name": "CAOA - Santo Andre"
+  },
+  {
+    "code": "B05AM26026",
+    "name": "CAOA - Sao Carlos"
+  },
+  {
+    "code": "B05AM26027",
+    "name": "CAOA - Anhaia Mello"
+  },
+  {
+    "code": "B05AM26028",
+    "name": "CAOA - Ceasa"
+  },
+  {
+    "code": "B05AM26029",
+    "name": "CAOA - Nacoes Unidas"
+  },
+  {
+    "code": "B05AM26030",
+    "name": "CAOA - Ermano Marchetti"
+  },
+  {
+    "code": "B05AM26031",
+    "name": "CAOA - JK"
+  },
+  {
+    "code": "B05AM26032",
+    "name": "CAOA - Aeroporto (M Guimaraes)"
+  },
+  {
+    "code": "B05AM26033",
+    "name": "CAOA - Ipiranga"
+  },
+  {
+    "code": "B05AM26034",
+    "name": "Grand Brasil - Barra Funda"
+  },
+  {
+    "code": "B05AM26035",
+    "name": "CAOA - Santana"
+  },
+  {
+    "code": "B05AM26036",
+    "name": "Max - Ipiranga"
+  },
+  {
+    "code": "B05AM26037",
+    "name": "Max - Morumbi"
+  },
+  {
+    "code": "B05AM26038",
+    "name": "CAOA - Taubate"
+  },
+  {
+    "code": "B05AM26039",
+    "name": "Caoa - Aricanduva"
+  },
+  {
+    "code": "B05AM26040",
+    "name": "Andreta - Jundiai"
+  },
+  {
+    "code": "B05AM26041",
+    "name": "Granday - Mooca"
+  },
+  {
+    "code": "B05AM26042",
+    "name": "Sinal - Sao Caetano"
+  },
+  {
+    "code": "B05AM26043",
+    "name": "Soma - Sao Joao da Boa Vista"
+  },
+  {
+    "code": "B05AM26044",
+    "name": "Aversa - Limeira"
+  },
+  {
+    "code": "B05AM26045",
+    "name": "Andreta - Indaiatuba"
+  },
+  {
+    "code": "B05AM26046",
+    "name": "Andreta - Americana"
+  },
+  {
+    "code": "B05AM26047",
+    "name": "Sinal - Diadema"
+  },
+  {
+    "code": "B05AM26048",
+    "name": "New - Franca"
+  },
+  {
+    "code": "B05AM26050",
+    "name": "Rodobens - Sao Jose do Rio Preto"
+  },
+  {
+    "code": "B05AM26051",
+    "name": "CAOA - Anhaia Mello"
+  },
+  {
+    "code": "B05AM26052",
+    "name": "Max - End. Entrega CD"
+  },
+  {
+    "code": "B05AM26054",
+    "name": "CAOA - Ipiranga"
+  },
+  {
+    "code": "B05AM26056",
+    "name": "CAOA - Aeroporto (M. Guimaraes)"
+  },
+  {
+    "code": "B05AM26057",
+    "name": "CAOA - Nacoes Unidas"
+  },
+  {
+    "code": "B05AM26058",
+    "name": "CAOA - São Bernardo"
+  },
+  {
+    "code": "B05AM26060",
+    "name": "CAOA - Santo André"
+  },
+  {
+    "code": "B05AM26061",
+    "name": "CAOA - Campinas Trevo"
+  },
+  {
+    "code": "B05AM26062",
+    "name": "CAOA - Itu"
+  },
+  {
+    "code": "B05AM26064",
+    "name": "CAOA - Presidente Prudente"
+  },
+  {
+    "code": "B05AM26065",
+    "name": "CAOA - S J dos Campos"
+  },
+  {
+    "code": "B05AM26066",
+    "name": "CAOA - Taubate"
+  },
+  {
+    "code": "B05AM26067",
+    "name": "CAOA  - Aracatuba"
+  },
+  {
+    "code": "B05AM26068",
+    "name": "CAOA - Sao Carlos"
+  },
+  {
+    "code": "B05AM26069",
+    "name": "CAOA - Marília"
+  },
+  {
+    "code": "B05AM26070",
+    "name": "CAOA - São Paulo 03.518 (Matriz)"
+  },
+  {
+    "code": "B05AM26071",
+    "name": "New - Araraquara"
+  },
+  {
+    "code": "B05AM26072",
+    "name": "New - Castelo"
+  },
+  {
+    "code": "B05AM26073",
+    "name": "Sinal - SCS (Endereço de Entrega)"
+  },
+  {
+    "code": "B05AM26074",
+    "name": "Destaque - Bragança Paulista"
+  },
+  {
+    "code": "B05AM26075",
+    "name": "Destaque - Atibaia"
+  },
+  {
+    "code": "B05AM26076",
+    "name": "CAOA - Consolação"
+  },
+  {
+    "code": "B05AM26077",
+    "name": "Max - Corifeu"
+  },
+  {
+    "code": "B05AM26078",
+    "name": "Sinal - Norte"
+  },
+  {
+    "code": "B05AM26079",
+    "name": "Top Motors - Jaú"
+  },
+  {
+    "code": "B05AM26080",
+    "name": "Top Motors - Botucatu"
+  },
+  {
+    "code": "B05AM26081",
+    "name": "Nobre - São Miguel"
+  },
+  {
+    "code": "B05AM26082",
+    "name": "Destaque - Caraguatatuba"
+  },
+  {
+    "code": "B05AM26083",
+    "name": "Aversa - Piracicaba (Centro)"
+  },
+  {
+    "code": "B05AM26084",
+    "name": "Caoa - Aeroporto (M. Guimaraes)"
+  },
+  {
+    "code": "B05AM26085",
+    "name": "Caoa - Praia Grande"
+  },
+  {
+    "code": "B05AM26086",
+    "name": "Caoa - Santos"
+  },
+  {
+    "code": "B05AM26087",
+    "name": "CAOA - Nações Unidas"
+  },
+  {
+    "code": "B05AM26088",
+    "name": "CAOA - Ibirapuera"
+  },
+  {
+    "code": "B05AM26089",
+    "name": "New - Lagoinha"
+  },
+  {
+    "code": "B05AM26090",
+    "name": "Granday - Carrão (Service)"
+  },
+  {
+    "code": "B05AM26091",
+    "name": "Caoa - Imarés (Service)"
+  },
+  {
+    "code": "B05AM26092",
+    "name": "Caminho - Piracicaba"
+  },
+  {
+    "code": "B05AM26093",
+    "name": "Caminho - Limeira"
+  },
+  {
+    "code": "B05AM26094",
+    "name": "Caminho - Piracicaba (Centro)"
+  },
+  {
+    "code": "B05AM26095",
+    "name": "CAOA - JK"
+  },
+  {
+    "code": "B05AM26096",
+    "name": "Max - Interlagos"
+  },
+  {
+    "code": "B05AM26097",
+    "name": "Caoa Marilia - Service"
+  },
+  {
+    "code": "B05AM26098",
+    "name": "Quality - São João da Boa Vista"
+  },
+  {
+    "code": "B05AM26099",
+    "name": "New - Barretos"
+  },
+  {
+    "code": "B05AM26100",
+    "name": "Nobre - Suzano"
+  },
+  {
+    "code": "B05AM26101",
+    "name": "New - Sertãozinho"
+  },
+  {
+    "code": "B05AM26102",
+    "name": "Grand Brasil SBC - End. Entrega"
+  },
+  {
+    "code": "B05AM26103",
+    "name": "Andreta - Valinhos"
+  },
+  {
+    "code": "B05AM26104",
+    "name": "Max - Osasco"
+  },
+  {
+    "code": "B05AM26105",
+    "name": "Max - Interlagos"
+  },
+  {
+    "code": "B05AM26106",
+    "name": "Vime - São João da Boa Vista"
+  },
+  {
+    "code": "B05AM26107",
+    "name": "CAOA - Raposo"
+  },
+  {
+    "code": "B05AM26300",
+    "name": "Caoa - Sumaré"
+  },
+  {
+    "code": "B05AM27001",
+    "name": "Privillege - Palmas"
+  },
+  {
+    "code": "B05AM27002",
+    "name": "Privillege - Araguaína"
+  },
+  {
+    "code": "B05AM27003",
+    "name": "Privillege - Palmas"
+  }
+]

@@ -5,7 +5,7 @@ import type React from "react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, CarFront } from "lucide-react"
+import { LayoutDashboard, CarFront, CheckCheckIcon } from "lucide-react"
 
 interface NavItem {
   title: string
@@ -24,6 +24,11 @@ const navItems: NavItem[] = [
     href: "/dashboard/checklist",
     icon: CarFront,
   },
+  {
+    title: "RepairOrder",
+    href: "/dashboard/repairorder",
+    icon: CheckCheckIcon,
+  }
 ]
 
 export function DashboardNav() {
