@@ -34,7 +34,7 @@ export default async function Home() {
           </Link>
 
           <Link
-            href="/sign-up"
+            href="/sign-in"
             className="w-80 rounded-xl border border-gray-300 p-6 text-left hover:border-blue-600 hover:text-blue-600 transition"
           >
             <h3 className="text-2xl font-bold">Criar Conta &rarr;</h3>
