@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./node_modules/@prisma/client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -8,36 +8,53 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Enum para os itens técnicos
+enum EstadoCheck {
+  BOM
+  RUIM
+}
+
 model Client {
-  xata_id        String      @id @unique(map: "_pgroll_new_Client_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int         @default(0)
-  xata_createdat DateTime    @default(now()) @db.Timestamptz(6)
-  xata_updatedat DateTime    @default(now()) @db.Timestamptz(6)
-  nome           String
-  telefone       String
-  email          String
-  checklists     CheckList[]
+  xata_id        String   @id @unique(map: "_pgroll_new_Client_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int      @default(0)
+  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
+
+  nome     String
+  telefone String
+  email    String
+
+  checklists CheckList[]
 }
 
 model Vehicle {
-  xata_id        String      @id @unique(map: "_pgroll_new_Vehicle_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int         @default(0)
-  xata_createdat DateTime    @default(now()) @db.Timestamptz(6)
-  xata_updatedat DateTime    @default(now()) @db.Timestamptz(6)
-  marca          String
-  modelo         String
-  km             Int
-  checklists     CheckList[]
+  xata_id        String   @id @unique(map: "_pgroll_new_Vehicle_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int      @default(0)
+  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
+
+  marca  String
+  modelo String
+  km     Int
+
+  checklists CheckList[]
 }
 
 model CheckList {
-  xata_id                  String      @id @unique(map: "_pgroll_new_CheckList_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version             Int         @default(0)
-  xata_createdat           DateTime    @default(now()) @db.Timestamptz(6)
-  xata_updatedat           DateTime    @default(now()) @db.Timestamptz(6)
-  createdBy                String
-  clientId                 String
-  vehicleId                String
+  xata_id        String   @id @unique(map: "_pgroll_new_CheckList_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int      @default(0)
+  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
+
+  createdBy     String // Clerk ID do usuário
+  createdByName String // Clerk username
+
+  clientId  String
+  vehicleId String
+
+  client  Client  @relation(fields: [clientId], references: [xata_id], onDelete: Cascade)
+  vehicle Vehicle @relation(fields: [vehicleId], references: [xata_id], onDelete: Cascade)
+
   nivelOleo                EstadoCheck
   fluidoFreio              EstadoCheck
   fluidoDirecao            EstadoCheck
@@ -49,10 +66,8 @@ model CheckList {
   fluidoLimpador           EstadoCheck
   desgasteBorrachaLimpador EstadoCheck
   correaAcessorios         EstadoCheck
-  observacoes              String?
-  createdByName            String
-  client                   Client      @relation(fields: [clientId], references: [xata_id], onDelete: Cascade)
-  vehicle                  Vehicle     @relation(fields: [vehicleId], references: [xata_id], onDelete: Cascade)
+
+  observacoes String?
 }
 
 model ApiToken {
@@ -61,9 +76,4 @@ model ApiToken {
   expiresAt DateTime
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
-}
-
-enum EstadoCheck {
-  BOM
-  RUIM
 }
