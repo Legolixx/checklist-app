@@ -43,3 +43,5 @@ next-env.d.ts
 # NÃO ignore a pasta prisma
 !.prisma
 !prisma/*
+# clerk configuration (can include secrets)
+/.clerk/

@@ -20,8 +20,8 @@ import {
   FileText,
   MapPin,
   Package,
-  PenTool,
   User,
+  Wrench,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
@@ -242,7 +242,7 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                             value="services"
                             className="flex items-center gap-1"
                           >
-                            <PenTool className="h-4 w-4" />
+                            <Wrench className="h-4 w-4" />
                             Serviços
                           </TabsTrigger>
                           <TabsTrigger

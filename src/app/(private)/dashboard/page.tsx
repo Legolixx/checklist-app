@@ -1,34 +1,47 @@
-import { currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
+import { currentUser } from "@clerk/nextjs/server"
+import Link from "next/link"
 
-export default async function DashboardPage() {
-  const user = await currentUser();
+export default async function Dashboard() {
+  const user = await currentUser()
+  const firstName = user?.username || "Usuário"
 
   return (
-    <div className="relative flex flex-col items-center overflow-hidden">
-      {/* Card com as informações - agora em cima */}
-      <div className="flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md max-w-2xl w-full text-center mb-4 z-10">
-        <h1 className="text-3xl font-bold tracking-tight">
-          Bem-vindo{' '}
-          <span className="text-blue-700 uppercase">
-            {user?.username}
-          </span>
-        </h1>
-        <p className="text-muted-foreground">
-          Check-list Hyundai-Brasil app
-        </p>
+    <div className="relative flex items-center justify-center min-h-screen w-full overflow-hidden rounded-2xl">
+      {/* Imagem de fundo com overlay */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/IMG_5506.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" />
       </div>
 
-      {/* Imagem abaixo e com altura controlada */}
-      <div className="relative w-full flex justify-center">
-        <Image
-          src="/banner.jpg"
-          width={500}
-          height={500}
-          alt="Banner Hyundai-Brasil"
-          className="max-h-[60vh] w-auto rounded-lg shadow-lg object-contain"
-        />
+      {/* Cartão central com efeito de vidro fosco */}
+      <div className="relative z-10 w-full max-w-[500px] mx-4">
+        <div className="backdrop-blur-md bg-white/20 rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+          <div className="p-8 md:p-10">
+            <div className="space-y-6">
+              {/* Título de boas-vindas */}
+              <div className="space-y-2">
+                <h1 className="text-2xl md:text-3xl font-bold text-white">
+                  Bem-vindo, <span className="text-[#003B70] uppercase">{firstName}</span>
+                </h1>
+                <p className="text-white/90 text-lg">Hyundai-Brasil app</p>
+              </div>
+
+              {/* Botão de ação */}
+              <div className="pt-4">
+                <Link
+                  href="/dashboard/repairorder"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[#003B70] hover:bg-[#00294d] text-white font-medium rounded-lg transition-colors duration-200 w-full sm:w-auto"
+                >
+                  Ver Ordem de Serviços
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  );
+  )
 }

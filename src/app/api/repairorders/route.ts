@@ -17,7 +17,7 @@ async function getValidToken() {
   const client_id = process.env.HMB_CLIENT_ID!;
   const client_secret = process.env.HMB_CLIENT_SECRET!;
 
-  const tokenResponse = await fetch('https://apitest.hyundai-brasil.com:8065/v1/oauth/token', {
+  const tokenResponse = await fetch('https://api.hyundai-brasil.com:8065/v1/oauth/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     const accessToken = await getValidToken();
 
-    const url = `https://apitest.hyundai-brasil.com:8065/integration/v1.1/repairorder/RepairOrderSet?$filter=CHASSI eq '${chassi}'&$expand=CarWashChecklistSet,TechniciansHoursSet,ProductsSet,ServicesSet`;
+    const url = `https://api.hyundai-brasil.com:8065/integration/v1.1/repairorder/RepairOrderSet?$filter=CHASSI eq '${chassi}'&$expand=CarWashChecklistSet,TechniciansHoursSet,ProductsSet,ServicesSet`;
 
     const repairOrderResponse = await fetch(url, {
       headers: { Authorization: `Bearer ${accessToken}` },
