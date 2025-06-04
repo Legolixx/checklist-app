@@ -10,13 +10,26 @@ export default function HomePage() {
   const [orders, setOrders] = useState<RepairOrder[]>([]);
 
   const handleSearch = async (chassi: string) => {
-    const res = await fetch("/api/repairorders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chassi }),
-    });
-    const data = await res.json();
-    setOrders(data.d.results);
+    try {
+      const res = await fetch("/api/repairorders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chassi }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        console.error("Erro ao buscar OS:", data.error);
+        alert(`Erro: ${data.error || "Erro desconhecido"}`);
+        return;
+      }
+
+      setOrders(data.data.d.results);
+    } catch (error) {
+      console.error("Erro inesperado:", error);
+      alert("Erro inesperado ao buscar OS.");
+    }
   };
 
   return (

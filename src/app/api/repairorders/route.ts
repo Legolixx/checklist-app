@@ -28,9 +28,13 @@ async function getValidToken() {
     }).toString()
   });
 
+
   if (!tokenResponse.ok) {
+    const errorText = await tokenResponse.text();
+    console.error("Erro ao obter token:", errorText);
     throw new Error('Erro ao obter token');
   }
+
 
   const tokenData = await tokenResponse.json();
   const accessToken = tokenData.access_token;
@@ -49,7 +53,13 @@ export async function POST(req: NextRequest) {
   try {
     const { chassi } = await req.json();
 
+    if (!chassi) {
+      console.error("Chassi não informado!");
+      return NextResponse.json({ success: false, error: "Chassi é obrigatório" }, { status: 400 });
+    }
+
     const accessToken = await getValidToken();
+    console.log("Token obtido com sucesso.");
 
     const url = `https://api.hyundai-brasil.com:8065/integration/v1.1/repairorder/RepairOrderSet?$filter=CHASSI eq '${chassi}'&$expand=CarWashChecklistSet,TechniciansHoursSet,ProductsSet,ServicesSet`;
 
@@ -58,14 +68,18 @@ export async function POST(req: NextRequest) {
     });
 
     if (!repairOrderResponse.ok) {
-      return NextResponse.json({ error: 'Erro ao consultar OS' }, { status: 500 });
+      const errorText = await repairOrderResponse.text();
+      console.error("Erro na consulta OS:", errorText);
+      return NextResponse.json({ success: false, error: "Erro ao consultar OS", detail: errorText }, { status: 500 });
     }
 
     const repairOrderData = await repairOrderResponse.json();
+    console.log("Dados da OS obtidos:", repairOrderData);
 
-    return NextResponse.json(repairOrderData);
+    return NextResponse.json({ success: true, data: repairOrderData });
+
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Erro interno no servidor' }, { status: 500 });
+    console.error("Erro interno:", error);
+    return NextResponse.json({ success: false, error: "Erro interno no servidor" }, { status: 500 });
   }
 }
