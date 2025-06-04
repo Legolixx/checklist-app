@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma'; // ajuste o caminho conforme seu projeto
+import { prisma } from '@/lib/prisma';
 
 async function getValidToken() {
   const existingToken = await prisma.apiToken.findFirst({
@@ -11,6 +11,7 @@ async function getValidToken() {
   });
 
   if (existingToken) {
+
     return existingToken.token;
   }
 
@@ -37,7 +38,7 @@ async function getValidToken() {
   await prisma.apiToken.create({
     data: {
       token: accessToken,
-      expiresAt: new Date(Date.now() + 4 * 60 * 60 * 1000) // agora + 4 horas
+      expiresAt: new Date(Date.now()) // agora + 4 horas
     }
   });
 

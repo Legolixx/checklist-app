@@ -12,9 +12,9 @@ export default async function Home() {
     <div className="flex min-h-screen flex-col items-center justify-between py-2 bg-white dark:bg-gray-900 transition-colors">
       <main className="flex w-full flex-1 flex-col items-center justify-center px-6 text-center">
         <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white">
-          Hyundai Brasil{" "}
+          HMB - Portal{" "}
           <span className="text-blue-600 dark:text-blue-400">
-            Portal After Sales
+            Consultas internas
           </span>
         </h1>
 
@@ -22,7 +22,6 @@ export default async function Home() {
           Portal para gerenciamento e acompanhamento de processos de Pós-Vendas
           Hyundai.
         </p>
-
         <div className="mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-6">
           <Link
             href="/sign-in"

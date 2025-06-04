@@ -1,7 +1,7 @@
 import React from "react";
 import { Construction } from "lucide-react";
 
-function RelatoriosPage() {
+function RevPlanejadas() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-180px)] text-center">
       <Construction className="w-16 h-16 text-gray-500 mb-4" />
@@ -15,4 +15,4 @@ function RelatoriosPage() {
   );
 }
 
-export default RelatoriosPage;
+export default RevPlanejadas;
