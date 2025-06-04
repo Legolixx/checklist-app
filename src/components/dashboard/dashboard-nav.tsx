@@ -5,7 +5,11 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, CarFront, ClipboardCheck, HandCoins, Car } from "lucide-react";
+import {
+  CarFront,
+  ClipboardCheck,
+  HandCoins,
+} from "lucide-react";
 import Image from "next/image";
 
 interface NavItem {
@@ -16,25 +20,20 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    title: "Overview",
-    href: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
     title: "Consulta OS",
     href: "/dashboard/repairorder",
     icon: CarFront,
   },
   {
     title: "AS1Q",
-    href: "/dashboard/AS1Q",
+    href: "/dashboard/as1q",
     icon: HandCoins,
   },
-{
-  title: "Relatórios",
-  href: "/dashboard/relatorios",
-  icon: ClipboardCheck,
-}
+  {
+    title: "Relatórios",
+    href: "/dashboard/relatorios",
+    icon: ClipboardCheck,
+  },
 ];
 
 export function DashboardNav() {

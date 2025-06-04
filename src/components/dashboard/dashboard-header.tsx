@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "../ToggleDarkLightMode";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export function DashboardHeader() {
   const { theme } = useTheme();
@@ -17,14 +18,16 @@ export function DashboardHeader() {
     <header className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b bg-background/95 px-4 backdrop-blur lg:px-8">
       <div className="flex items-center gap-4 lg:gap-6">
         <div className="hidden lg:block">
-          <Image
-            src={logoSrc}
-            alt="Hyundai Logo"
-            width={150}
-            height={70}
-            className="object-contain"
-            priority
-          />
+          <Link href={"/dashboard"}>
+            <Image
+              src={logoSrc}
+              alt="Hyundai Logo"
+              width={150}
+              height={70}
+              className="object-contain"
+              priority
+            />
+          </Link>
         </div>
       </div>
       <div className="flex items-center gap-4">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 export function SearchForm({
   onSearch,
@@ -26,10 +27,11 @@ export function SearchForm({
         placeholder="Digite o chassi"
         value={chassi}
         onChange={(e) => setChassi(e.target.value)}
-        className="w-full max-w-xs"
+        className="w-full max-w-xs rounded-lg shadow-sm"
         required
       />
-      <Button type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading} className="flex items-center gap-2">
+        {isLoading && <Loader2 className="animate-spin w-4 h-4" />}
         {isLoading ? "Buscando..." : "Buscar"}
       </Button>
     </form>

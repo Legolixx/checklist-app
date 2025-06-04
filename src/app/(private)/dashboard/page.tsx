@@ -1,12 +1,11 @@
-import { currentUser } from "@clerk/nextjs/server"
-import Link from "next/link"
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Dashboard() {
-  const user = await currentUser()
-  const firstName = user?.username || "Usuário"
+  const user = await currentUser();
+  const firstName = `${user?.firstName} ${user?.lastName}` || "Usuário";
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen w-full overflow-hidden rounded-2xl">
+    <div className="relative flex items-center justify-center min-h-[calc(100vh-180px)] overflow-hidden rounded-2xl">
       {/* Imagem de fundo com overlay */}
       <div className="absolute inset-0 z-0">
         <div
@@ -24,24 +23,22 @@ export default async function Dashboard() {
               {/* Título de boas-vindas */}
               <div className="space-y-2">
                 <h1 className="text-2xl md:text-3xl font-bold text-white">
-                  Bem-vindo, <span className="text-[#003B70] uppercase">{firstName}</span>
+                  Bem-vindo,{" "}
+                  <span className="text-[#03233f] uppercase">{firstName}</span>
                 </h1>
                 <p className="text-white/90 text-lg">Hyundai-Brasil app</p>
               </div>
 
-              {/* Botão de ação */}
+              {/* Texto de rodapé */}
               <div className="pt-4">
-                <Link
-                  href="/dashboard/repairorder"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-[#003B70] hover:bg-[#00294d] text-white font-medium rounded-lg transition-colors duration-200 w-full sm:w-auto"
-                >
-                  Ver Ordem de Serviços
-                </Link>
+                <p className="text-xs text-white/70 text-center">
+                  Made with <span className="text-red-500">&lt;3</span> by VF
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
