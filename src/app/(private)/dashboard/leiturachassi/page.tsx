@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Car, Gauge, Repeat, Calendar } from "lucide-react";
 
 function LeituraChassi() {
-  const [carname, setCarName] = useState("");
   const [chassi, setChassi] = useState("");
   const [modelo, setModelo] = useState({
     veiculo: "",

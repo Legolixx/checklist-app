@@ -194,12 +194,14 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
           </div>
 
           {/* Solicitação do cliente */}
-          <div className="bg-muted/30 p-4 rounded-lg">
+          <div className="bg-muted/30 p-4 rounded-lg w-full">
             <div className="flex items-center gap-2 mb-2">
               <FileText className="h-5 w-5 text-muted-foreground" />
               <h3 className="font-medium">Solicitação do Cliente</h3>
             </div>
-            <p className="text-sm">{order.SOLICITACAO_CLIENTE}</p>
+            <p className="text-sm max-w-md break-words">
+              {order.SOLICITACAO_CLIENTE}
+            </p>
           </div>
 
           {/* Grupos de serviços */}
