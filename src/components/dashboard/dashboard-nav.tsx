@@ -5,7 +5,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CarFront, ChevronDown, ClipboardCheck, HandCoins } from "lucide-react";
+import { CarFront, ChevronDown, ClipboardCheck, HandCoins, Search } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
       {
         title: "Identificar Modelo",
         href: "/dashboard/leiturachassi",
-        icon: ClipboardCheck,
+        icon: Search,
       },
       {
         title: "Ordem de Serviço",

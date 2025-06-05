@@ -202,7 +202,7 @@ function LeituraChassi() {
             <Car className="text-purple-500" />
             <div>
               <p className="text-sm text-gray-500">CarName</p>
-              <p className="font-semibold">{modelo.carName}</p>
+              <p className="font-semibold text-sm">{modelo.carName}</p>
             </div>
           </div>
         )}
