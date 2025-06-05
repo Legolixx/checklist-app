@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Car, Settings, Gauge, Repeat, Calendar } from "lucide-react";
+import { Car, Gauge, Repeat, Calendar } from "lucide-react";
 
 function LeituraChassi() {
+  const [carname, setCarName] = useState("");
   const [chassi, setChassi] = useState("");
   const [modelo, setModelo] = useState({
     veiculo: "",
@@ -11,15 +12,17 @@ function LeituraChassi() {
     motorizacao: "",
     transmissao: "",
     ano: "",
+    carName: "",
   });
 
-  const decodeChassi = (value: string) => {
+  const decodeChassi = async (value: string) => {
     const result = {
       veiculo: "",
       carroceria: "",
       motorizacao: "",
       transmissao: "",
       ano: "",
+      carName: "",
     };
 
     if (value.length >= 4) {
@@ -87,6 +90,30 @@ function LeituraChassi() {
       if (anos[ano]) result.ano = anos[ano];
     }
 
+    if (value.length > 16) {
+      try {
+        const res = await fetch("/api/carname", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ value }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          console.error("Erro ao buscar OS:", data.error);
+          alert(`Erro: ${data.error || "Erro desconhecido"}`);
+          return;
+        }
+
+        result.carName = data.data.d.CarName;
+
+        console.log(data.data.d.CarName);
+      } catch (error) {
+        console.error("Erro inesperado:", error);
+        alert("Erro inesperado ao buscar OS.");
+      }
+    }
     setModelo(result);
   };
 
@@ -128,7 +155,7 @@ function LeituraChassi() {
         )}
         {modelo.carroceria && (
           <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 shadow rounded-xl border border-gray-200 dark:border-gray-700">
-            <Settings className="text-green-500" />
+            <Car className="text-green-500" />
             <div>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Carroceria
@@ -167,6 +194,15 @@ function LeituraChassi() {
             <div>
               <p className="text-sm text-gray-500">Ano Modelo</p>
               <p className="font-semibold">{modelo.ano}</p>
+            </div>
+          </div>
+        )}
+        {modelo.carName && (
+          <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 shadow rounded-xl border border-gray-200 dark:border-gray-700">
+            <Car className="text-purple-500" />
+            <div>
+              <p className="text-sm text-gray-500">CarName</p>
+              <p className="font-semibold">{modelo.carName}</p>
             </div>
           </div>
         )}
