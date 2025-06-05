@@ -42,7 +42,7 @@ async function getValidToken() {
   await prisma.apiToken.create({
     data: {
       token: accessToken,
-      expiresAt: new Date(Date.now()) // agora + 4 horas
+      expiresAt: new Date(Date.now() + 4 * 60 * 60 * 1000) // agora + 4 horas
     }
   });
 
