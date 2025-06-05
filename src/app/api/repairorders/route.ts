@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
     }
 
     const accessToken = await getValidToken();
-    console.log("Token obtido com sucesso.");
+
 
     const url = `https://api.hyundai-brasil.com:8065/integration/v1.1/repairorder/RepairOrderSet?$filter=CHASSI eq '${chassi}'&$expand=CarWashChecklistSet,TechniciansHoursSet,ProductsSet,ServicesSet`;
 
@@ -74,7 +74,6 @@ export async function POST(req: NextRequest) {
     }
 
     const repairOrderData = await repairOrderResponse.json();
-    console.log("Dados da OS obtidos:", repairOrderData);
 
     return NextResponse.json({ success: true, data: repairOrderData });
 

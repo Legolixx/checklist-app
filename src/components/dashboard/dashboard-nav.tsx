@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
     icon: CarFront,
     children: [
       {
-        title: "Leitura Chassi",
+        title: "Identificar Modelo",
         href: "/dashboard/leiturachassi",
         icon: ClipboardCheck,
       },
