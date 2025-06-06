@@ -41,8 +41,6 @@ export async function GET(req: NextRequest) {
     _sum: {
       valor: true,
       revisoes: true,
-    },
-    _avg: {
       comissao: true,
     },
     _count: {
@@ -54,6 +52,6 @@ export async function GET(req: NextRequest) {
     valorTotalVendido: resumo._sum.valor ?? 0,
     totalPacotesVendidos: resumo._count._all,
     totalRevisoes: resumo._sum.revisoes ?? 0,
-    comissaoMedia: resumo._avg.comissao ?? 0,
+    comissaoMedia: resumo._sum.comissao ?? 0,
   });
 }

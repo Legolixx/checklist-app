@@ -10,6 +10,12 @@ import {
 } from "@/components/ui/card";
 import { DollarSign, Package, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import { Cell, Legend, Pie, PieChart } from "recharts";
 
 interface Metrics {
   valorTotalVendido: number;
@@ -31,6 +37,50 @@ export function OverviewTab() {
   const [metrics, setMetrics] = useState<Metrics | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [modelos, setModelos] = useState<[] | null>(null);
+
+  useEffect(() => {
+    const fetchModelos = async () => {
+      try {
+        const response = await fetch("/api/importar-pacotes/model");
+        if (!response.ok) throw new Error("Falha ao buscar modelos");
+        const data = await response.json();
+
+        const formattedData = data.modelos.map((item: any) => ({
+          name: item.modelo,
+          value: item._count._all,
+        }));
+
+        setModelos(formattedData);
+      } catch (error) {
+        console.error("Erro ao buscar modelos", error);
+      }
+    };
+
+    fetchModelos();
+  }, []);
+
+  const chartColors = ["#333446", "#7F8CAA", "#B8CFCE", "#EAEFEF"];
+
+  type ModeloConfig = {
+    [key: string]: {
+      label: string;
+      color: string;
+    };
+  };
+
+  type ModeloItem = { name: string; value: number };
+
+  const config = (modelos ?? []).reduce<ModeloConfig>(
+    (acc, item: ModeloItem, index) => {
+      acc[item.name] = {
+        label: item.name,
+        color: chartColors[index % chartColors.length],
+      };
+      return acc;
+    },
+    {}
+  );
 
   useEffect(() => {
     const fetchAvailableDates = async () => {
@@ -151,9 +201,7 @@ export function OverviewTab() {
                     currency: "BRL",
                   }).format(metrics?.valorTotalVendido || 0)}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
-                  Total de {metrics?.totalPacotesVendidos || 0} pacotes vendidos
-                </p>
+                <p className="text-xs text-slate-500 mt-1">Total</p>
               </>
             )}
           </CardContent>
@@ -162,7 +210,7 @@ export function OverviewTab() {
         <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Total de Revisões
+              Total de Pacotes
             </CardTitle>
             <Package className="h-4 w-4 text-blue-600" aria-hidden="true" />
           </CardHeader>
@@ -172,10 +220,10 @@ export function OverviewTab() {
             ) : (
               <>
                 <div className="text-2xl font-bold text-slate-900">
-                  {metrics?.totalRevisoes || 0}
+                  {metrics?.totalPacotesVendidos || 0}
                 </div>
                 <p className="text-xs text-slate-500 mt-1">
-                  Revisões programadas
+                  Total de {metrics?.totalRevisoes || 0} revisões vendidas
                 </p>
               </>
             )}
@@ -185,7 +233,7 @@ export function OverviewTab() {
         <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Comissão Média
+              Comissão Paga
             </CardTitle>
             <TrendingUp
               className="h-4 w-4 text-purple-600"
@@ -203,14 +251,50 @@ export function OverviewTab() {
                     currency: "BRL",
                   }).format(metrics?.comissaoMedia || 0)}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
-                  Por pacote vendido
-                </p>
+                <p className="text-xs text-slate-500 mt-1">Total</p>
               </>
             )}
           </CardContent>
         </Card>
       </div>
+      <Card className="bg-white shadow-lg border-0">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold text-slate-900">
+            Distribuição por Modelo
+          </CardTitle>
+          <CardDescription className="text-slate-600">
+            Proporção de vendas entre HB20 e CRETA
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={config} className="h-[300px]">
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Legend /> 
+              <Pie
+                data={modelos || []}
+                style={{textSizeAdjust: "100"}}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                label={({ value }) => `${value}`}
+              >
+                {modelos?.map((entry: ModeloItem, index: number) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={chartColors[index % chartColors.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
     </TabsContent>
   );
 }
