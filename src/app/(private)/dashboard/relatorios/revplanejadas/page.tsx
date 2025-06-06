@@ -1,15 +1,9 @@
-import React from "react";
-import { Construction } from "lucide-react";
-import UploadPlanilha from "@/components/upload/Upload_rev_plan";
+import { MaintenanceInsights } from "@/components/upload/rev-plan-tabs";
 
-function RevPlanejadas() {
+export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-180px)] text-center p-4">
-      <div className="mt-8 w-full">
-        <UploadPlanilha />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <MaintenanceInsights />
     </div>
   );
 }
-
-export default RevPlanejadas;

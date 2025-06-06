@@ -7,68 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Enum para os itens técnicos
-enum EstadoCheck {
-  BOM
-  RUIM
-}
-
-model Client {
-  xata_id        String   @id @unique(map: "_pgroll_new_Client_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int      @default(0)
-  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
-  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
-
-  nome     String
-  telefone String
-  email    String
-
-  checklists CheckList[]
-}
-
-model Vehicle {
-  xata_id        String   @id @unique(map: "_pgroll_new_Vehicle_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int      @default(0)
-  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
-  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
-
-  marca  String
-  modelo String
-  km     Int
-
-  checklists CheckList[]
-}
-
-model CheckList {
-  xata_id        String   @id @unique(map: "_pgroll_new_CheckList_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int      @default(0)
-  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
-  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
-
-  createdBy     String // Clerk ID do usuário
-  createdByName String // Clerk username
-
-  clientId  String
-  vehicleId String
-
-  client  Client  @relation(fields: [clientId], references: [xata_id], onDelete: Cascade)
-  vehicle Vehicle @relation(fields: [vehicleId], references: [xata_id], onDelete: Cascade)
-
-  nivelOleo                EstadoCheck
-  fluidoFreio              EstadoCheck
-  fluidoDirecao            EstadoCheck
-  fluidoArrefecimento      EstadoCheck
-  desgastePneu             EstadoCheck
-  calibragemPneus          EstadoCheck
-  lampadasDianteiras       EstadoCheck
-  lampadasTraseiras        EstadoCheck
-  fluidoLimpador           EstadoCheck
-  desgasteBorrachaLimpador EstadoCheck
-  correaAcessorios         EstadoCheck
-
-  observacoes String?
-}
-
 model ApiToken {
   id        String   @id @default(uuid())
   token     String
@@ -76,3 +14,47 @@ model ApiToken {
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
 }
+
+model PacoteManutencao {
+  id                   String   @id
+  codigo               String
+  chassi               String
+  comissao             Float
+  concessionario       String
+  consultor            String
+  dataInicio           DateTime
+  dataEncerramento     DateTime
+  modelo               String
+  mes                  String
+  notaFiscalIndividual Boolean
+  pacote               String
+  prazo                Int
+  revisoes             Int
+  statusComissao       String
+  valor                Float
+  versao               String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // Relação
+  dealer               BASE_DEALER? @relation(fields: [codigo], references: [COD_DEALER])
+}
+
+
+model BASE_DEALER {
+  COD_DEALER     String?   @unique
+  NOME_DEALER    String?
+  ESTADO         String?
+  GRUPO          String?
+  DIVIS_O        String?   @map("DIVISÃO")
+  STATUS         String?
+  GER_REG        String?
+  xata_updatedat DateTime  @default(now()) @db.Timestamptz(6)
+  xata_id        String    @unique(map: "_pgroll_new_Base-052025DPSMDLRREGIO_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int       @default(0)
+  xata_createdat DateTime  @default(now()) @db.Timestamptz(6)
+
+  // Relação inversa
+  pacotes        PacoteManutencao[]
+}
+

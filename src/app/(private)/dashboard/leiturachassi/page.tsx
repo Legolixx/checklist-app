@@ -26,7 +26,9 @@ function LeituraChassi() {
 
     if (value.length >= 4) {
       const veiculo = value[3];
-      if (veiculo === "B") result.veiculo = "HB20";
+      if (veiculo === "H") result.veiculo = "KONA";
+      else if (veiculo === "R") result.veiculo = "PALISADE";
+      else if (veiculo === "B") result.veiculo = "HB20";
       else if (veiculo === "C") result.veiculo = "Novo HB20";
       else if (veiculo === "G") result.veiculo = "Creta";
       else if (veiculo === "P") result.veiculo = "Novo Creta";
@@ -50,6 +52,9 @@ function LeituraChassi() {
         if (motorizacao === "A") result.motorizacao = "1.0";
         else if (motorizacao === "B") result.motorizacao = "1.0 TGDI";
         else if (motorizacao === "D") result.motorizacao = "1.6";
+        else if (motorizacao === "E") result.motorizacao = "1.0 TGDI L8";
+        else if (motorizacao === "F") result.motorizacao = "1.0 L8";
+        
       } else if (veiculo === "G") {
         if (motorizacao === "1") result.motorizacao = "1.6";
         else if (motorizacao === "3") result.motorizacao = "2.0";
@@ -58,19 +63,25 @@ function LeituraChassi() {
         else if (motorizacao === "C") result.motorizacao = "2.0";
         else if (motorizacao === "E") result.motorizacao = "1.0 TGDi";
         else if (motorizacao === "F") result.motorizacao = "1.6 TGDi";
+      } else if (veiculo === "H") {
+        if (motorizacao === "1") result.motorizacao = "1.6 GDI HEV";
+      } else if (veiculo === "R") {
+        if (motorizacao === "E") result.motorizacao = "3.8 GDI";
       }
     }
 
     if (value.length >= 9) {
       const transmissao = value[8];
       if (transmissao === "A") result.transmissao = "Manual";
-      else if (transmissao === "B") result.transmissao = "Automático";
+      else if (transmissao === "B") result.transmissao = "AT";
       else if (transmissao === "G") result.transmissao = "DCT";
+      else if (transmissao === "D") result.transmissao = "AT";
     }
 
     if (value.length >= 10) {
       const ano = value[9];
       const anos: { [key: string]: string } = {
+        T: "2026",
         S: "2025",
         R: "2024",
         P: "2023",
@@ -106,8 +117,6 @@ function LeituraChassi() {
         }
 
         result.carName = data.data.d.CarName;
-
-        console.log(data.data.d.CarName);
       } catch (error) {
         console.error("Erro inesperado:", error);
         alert("Erro inesperado ao buscar OS.");
@@ -124,7 +133,7 @@ function LeituraChassi() {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-180px)] max-w-2xl p-10 mx-auto bg-gray-100 dark:bg-gray-900 rounded-md">
-      <form className="flex flex-col items-center gap-2">
+      <form className="flex flex-col items-center gap-2 mx-auto">
         <p className="text-muted-foreground">
           Digite o chassi para descobrir o Modelo:
         </p>

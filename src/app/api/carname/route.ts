@@ -53,8 +53,6 @@ export async function POST(req: NextRequest) {
   try {
     const { value } = await req.json();
 
-    console.log("CHASSI:", value);
-
     if (!value) {
       console.error("Chassi não informado!");
       return NextResponse.json(
