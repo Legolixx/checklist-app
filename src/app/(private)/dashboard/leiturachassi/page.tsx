@@ -13,15 +13,12 @@ function LeituraChassi() {
     ano: "",
     carName: "",
   });
-
   const [erro, setErro] = useState("");
 
-  // Função para validar o chassi
   const validarChassi = (value: string) => {
-    // Definir valores válidos para cada posição do chassi
     const veiculosValidos = ["H", "R", "B", "C", "G", "P"];
     const carroceriasValidas: {
-      [key: string]: string[]; // Index signature
+      [key: string]: string[];
       B: string[];
       C: string[];
       G: string[];
@@ -72,7 +69,6 @@ function LeituraChassi() {
       "C",
     ];
 
-    // Validações por posição
     if (value.length >= 4 && !veiculosValidos.includes(value[3])) {
       return "Veículo inválido no 4º caractere do chassi.";
     }
@@ -123,7 +119,8 @@ function LeituraChassi() {
       if (veiculo === "C" || "B") {
         if (carroceria === "4") result.carroceria = "Sedan";
         else if (carroceria === "5") result.carroceria = "Hatch";
-      } else if (veiculo === "G" || "P" || "H" || "R") {
+      }
+      if (veiculo === "G" || "P" || "H" || "R") {
         if (carroceria === "8") result.carroceria = "SUV";
       }
     }
