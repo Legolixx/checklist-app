@@ -63,7 +63,7 @@ function UploadPlanilha() {
 
   return (
     <div className="flex flex-col items-end">
-      <label className="cursor-pointer flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+      <label className="cursor-pointer flex items-center gap-2 bg-white hover:bg-slate-400 text-slate-800 px-4 py-2 rounded-4xl">
         <Upload className="w-5 h-5" />
         <span>{loading ? "Importando..." : "Upload Planilha"}</span>
         <input

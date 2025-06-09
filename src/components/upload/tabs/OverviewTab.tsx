@@ -27,6 +27,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import UploadPlanilha from "../Upload_rev_plan";
 
 interface Metrics {
   valorTotalVendido: number;
@@ -187,45 +188,50 @@ export function OverviewTab() {
   return (
     <TabsContent value="overview" className="space-y-6">
       {/* Date Selection */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
-        <select
-          value={anoSelecionado || ""}
-          onChange={(e) => setAnoSelecionado(Number(e.target.value))}
-          className="p-2 border rounded-md bg-white text-slate-900"
-          aria-label="Selecionar ano"
-          disabled={isLoading}
-        >
-          <option value="" disabled>
-            Selecione o ano
-          </option>
-          {[...new Set(datasDisponiveis.map((d) => d.ano))].map((ano) => (
-            <option key={ano} value={ano}>
-              {ano}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-between">
+        <div className="flex gap-4">
+          <select
+            value={anoSelecionado || ""}
+            onChange={(e) => setAnoSelecionado(Number(e.target.value))}
+            className="p-2 border rounded-md bg-white text-slate-900"
+            aria-label="Selecionar ano"
+            disabled={isLoading}
+          >
+            <option value="" disabled>
+              Selecione o ano
             </option>
-          ))}
-        </select>
-        <select
-          value={mesSelecionado ?? "all"}
-          onChange={(e) =>
-            setMesSelecionado(
-              e.target.value === "all" ? null : Number(e.target.value)
-            )
-          }
-          className="p-2 border rounded-md bg-white text-slate-900"
-          aria-label="Selecionar mês"
-          disabled={isLoading || !anoSelecionado}
-        >
-          <option value="all">Todos os meses</option>
-          {datasDisponiveis
-            .filter((d) => d.ano === anoSelecionado)
-            .map((d) => (
-              <option key={d.mes} value={d.mes}>
-                {new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(
-                  new Date(2020, d.mes - 1)
-                )}
+            {[...new Set(datasDisponiveis.map((d) => d.ano))].map((ano) => (
+              <option key={ano} value={ano}>
+                {ano}
               </option>
             ))}
-        </select>
+          </select>
+          <select
+            value={mesSelecionado ?? "all"}
+            onChange={(e) =>
+              setMesSelecionado(
+                e.target.value === "all" ? null : Number(e.target.value)
+              )
+            }
+            className="p-2 border rounded-md bg-white text-slate-900"
+            aria-label="Selecionar mês"
+            disabled={isLoading || !anoSelecionado}
+          >
+            <option value="all">Todos os meses</option>
+            {datasDisponiveis
+              .filter((d) => d.ano === anoSelecionado)
+              .map((d) => (
+                <option key={d.mes} value={d.mes}>
+                  {new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(
+                    new Date(2020, d.mes - 1)
+                  )}
+                </option>
+              ))}
+          </select>
+        </div>
+        <div>
+          <UploadPlanilha />
+        </div>
       </div>
 
       {error && (
