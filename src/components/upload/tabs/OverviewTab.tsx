@@ -15,7 +15,18 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Cell, Legend, Pie, PieChart } from "recharts";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  LabelList,
+  Legend,
+  Pie,
+  PieChart,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 interface Metrics {
   valorTotalVendido: number;
@@ -30,106 +41,148 @@ interface DateOption {
   mes: number;
 }
 
+type ChartConfig = {
+  [key: string]: {
+    label?: React.ReactNode;
+    icon?: React.ComponentType<{}>;
+  } & (
+    | { color?: string; theme?: undefined }
+    | { color?: undefined; theme: Record<"light" | "dark", string> }
+  );
+};
+
+type ModeloItem = { name: string; value: number };
+
+const chartColors = [
+  "#002C5F", // Azul principal (Hyundai / ShadCN theme)
+  "#384a78",
+  "#878dac",
+  "#d6d8e3",
+];
+
+const formatModelos = (data: any[]): ModeloItem[] =>
+  data.map((item) => ({
+    name: item.modelo,
+    value: item._count._all,
+  }));
+
+const formatPacotes = (data: any[]): { tipo: string; quantidade: number }[] =>
+  data.map((item) => ({
+    tipo: `${item.revisoes} revisão`,
+    quantidade: item._count._all,
+  }));
+
 export function OverviewTab() {
   const [datasDisponiveis, setDatasDisponiveis] = useState<DateOption[]>([]);
   const [anoSelecionado, setAnoSelecionado] = useState<number | null>(null);
   const [mesSelecionado, setMesSelecionado] = useState<number | null>(null);
   const [metrics, setMetrics] = useState<Metrics | null>(null);
+  const [modelos, setModelos] = useState<ModeloItem[] | null>(null);
+  const [pacotes, setPacotes] = useState<
+    { tipo: string; quantidade: number }[] | null
+  >(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [modelos, setModelos] = useState<[] | null>(null);
 
-  useEffect(() => {
-    const fetchModelos = async () => {
-      try {
-        const response = await fetch("/api/importar-pacotes/model");
-        if (!response.ok) throw new Error("Falha ao buscar modelos");
-        const data = await response.json();
-
-        const formattedData = data.modelos.map((item: any) => ({
-          name: item.modelo,
-          value: item._count._all,
-        }));
-
-        setModelos(formattedData);
-      } catch (error) {
-        console.error("Erro ao buscar modelos", error);
+  const fetchAvailableDates = async () => {
+    try {
+      const response = await fetch("/api/importar-pacotes/anomesdisp");
+      if (!response.ok) throw new Error("Erro ao buscar datas");
+      const data = await response.json();
+      setDatasDisponiveis(data);
+      if (data.length > 0) {
+        setAnoSelecionado(data[0].ano);
+        // setMesSelecionado(data[0].mes);
       }
-    };
-
-    fetchModelos();
-  }, []);
-
-  const chartColors = ["#333446", "#7F8CAA", "#B8CFCE", "#EAEFEF"];
-
-  type ModeloConfig = {
-    [key: string]: {
-      label: string;
-      color: string;
-    };
+    } catch {
+      setError("Erro ao carregar datas disponíveis");
+    }
   };
 
-  type ModeloItem = { name: string; value: number };
+  const fetchPacotes = async () => {
+    if (!anoSelecionado) return;
 
-  const config = (modelos ?? []).reduce<ModeloConfig>(
-    (acc, item: ModeloItem, index) => {
-      acc[item.name] = {
-        label: item.name,
-        color: chartColors[index % chartColors.length],
-      };
-      return acc;
-    },
-    {}
-  );
+    try {
+      const url = new URL(
+        "/api/importar-pacotes/qntpacotes",
+        window.location.origin
+      );
+      url.searchParams.set("ano", String(anoSelecionado));
+      if (mesSelecionado) url.searchParams.set("mes", String(mesSelecionado));
+
+      const response = await fetch(url.toString());
+      if (!response.ok) throw new Error("Erro ao buscar Pacotes");
+
+      const data = await response.json();
+      setPacotes(formatPacotes(data.pacotes));
+    } catch (err) {
+      console.error("Erro ao buscar Pacotes", err);
+    }
+  };
+
+  const fetchMetrics = async () => {
+    if (!anoSelecionado) return;
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const url = new URL(
+        "/api/importar-pacotes/total",
+        window.location.origin
+      );
+      url.searchParams.set("ano", String(anoSelecionado));
+      if (mesSelecionado) url.searchParams.set("mes", String(mesSelecionado));
+
+      const response = await fetch(url.toString());
+      if (!response.ok) throw new Error("Erro ao buscar métricas");
+
+      const data = await response.json();
+      setMetrics(data);
+    } catch {
+      setError("Erro ao carregar métricas");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchModelos = async () => {
+    if (!anoSelecionado) return;
+
+    try {
+      const url = new URL(
+        "/api/importar-pacotes/model",
+        window.location.origin
+      );
+      url.searchParams.set("ano", String(anoSelecionado));
+      if (mesSelecionado) url.searchParams.set("mes", String(mesSelecionado));
+
+      const response = await fetch(url.toString());
+      if (!response.ok) throw new Error("Erro ao buscar modelos");
+
+      const data = await response.json();
+      setModelos(formatModelos(data.modelos));
+    } catch (err) {
+      console.error("Erro ao buscar modelos", err);
+    }
+  };
 
   useEffect(() => {
-    const fetchAvailableDates = async () => {
-      try {
-        const response = await fetch("/api/importar-pacotes/anomesdisp");
-        if (!response.ok) throw new Error("Failed to fetch available dates");
-        const data = await response.json();
-        setDatasDisponiveis(data);
-
-        if (data.length > 0) {
-          setAnoSelecionado(data[0].ano);
-          //setMesSelecionado(data[0].mes);
-        }
-      } catch (err) {
-        setError("Erro ao carregar datas disponíveis");
-      }
-    };
     fetchAvailableDates();
   }, []);
 
   useEffect(() => {
-    if (!anoSelecionado) return;
-
-    const fetchMetrics = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const url = new URL(
-          "/api/importar-pacotes/total",
-          window.location.origin
-        );
-        url.searchParams.set("ano", String(anoSelecionado));
-        if (mesSelecionado) {
-          url.searchParams.set("mes", String(mesSelecionado));
-        }
-
-        const response = await fetch(url.toString());
-        if (!response.ok) throw new Error("Failed to fetch metrics");
-        const data = await response.json();
-        setMetrics(data);
-      } catch (err) {
-        setError("Erro ao carregar métricas");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchMetrics();
+    fetchModelos();
+    fetchPacotes();
   }, [anoSelecionado, mesSelecionado]);
+
+  const modeloConfig = (modelos ?? []).reduce<ChartConfig>((acc, item, i) => {
+    acc[item.name] = {
+      label: item.name,
+      color: chartColors[i % chartColors.length],
+    };
+    return acc;
+  }, {});
 
   return (
     <TabsContent value="overview" className="space-y-6">
@@ -262,21 +315,24 @@ export function OverviewTab() {
           <CardTitle className="text-lg font-semibold text-slate-900">
             Distribuição por Modelo
           </CardTitle>
-          <CardDescription className="text-slate-600">
-            Proporção de vendas entre HB20 e CRETA
+          <CardDescription className="text-slate-600 flex flex-row gap-2">
+            Proporção de vendas entre{" "}
+            {modelos?.map((modelo, index) => (
+              <div key={index}>{modelo.name}</div>
+            ))}
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={config} className="h-[300px]">
+          <ChartContainer config={modeloConfig} className="h-[300px]">
             <PieChart>
               <ChartTooltip
                 cursor={false}
                 content={<ChartTooltipContent hideLabel />}
               />
-              <Legend /> 
+              <Legend />
               <Pie
                 data={modelos || []}
-                style={{textSizeAdjust: "100"}}
+                style={{ textSizeAdjust: "100" }}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
@@ -292,6 +348,53 @@ export function OverviewTab() {
                 ))}
               </Pie>
             </PieChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-white shadow-lg border-0">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold text-slate-900">
+            Vendas por Tipo de Pacote
+          </CardTitle>
+          <CardDescription className="text-slate-600">
+            Total de pacotes vendidos, classificados por número de revisões.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer
+            config={{
+              quantidade: {
+                label: "Quantidade",
+                color: "hsl(var(--blue-500))",
+              },
+            }}
+            className="h-[300px]"
+          >
+            <BarChart data={pacotes || []}>
+              <CartesianGrid vertical={false} />
+              <XAxis dataKey="tipo" tickLine={false} axisLine={false} />
+              <YAxis tickLine={false} axisLine={false} />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Bar dataKey="quantidade" radius={4}>
+                <LabelList
+                  dataKey="quantidade"
+                  position="insideTop"
+                  fill="#ffff"
+                  fontSize={14}
+                  fontWeight={0}
+                />
+                {pacotes?.map((_, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={chartColors[index % chartColors.length]}
+                  />
+                ))}
+              </Bar>
+            </BarChart>
           </ChartContainer>
         </CardContent>
       </Card>

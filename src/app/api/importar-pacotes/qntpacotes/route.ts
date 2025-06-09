@@ -34,13 +34,13 @@ export async function GET(req: NextRequest) {
     };
   }
 
-  const modelos = await prisma.pacoteManutencao.groupBy({
+  const pacotes = await prisma.pacoteManutencao.groupBy({
     where,
-    by: ["modelo"],
+    by: ["revisoes"],
     _count: {
       _all: true,
     },
   });
 
-  return NextResponse.json({ modelos }, { status: 200 });
+  return NextResponse.json({ pacotes }, { status: 200 });
 }
