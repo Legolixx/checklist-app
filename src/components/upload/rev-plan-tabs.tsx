@@ -3,6 +3,7 @@ import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { BarChart3, Building2, TrendingUp } from "lucide-react";
 import { OverviewTab } from "./tabs/OverviewTab";
 import { TrendsTab } from "./tabs/TrendsTab";
+import DealerShipsTab from "./tabs/DealerShipsTab";
 
 export function MaintenanceInsights() {
   return (
@@ -48,6 +49,7 @@ export function MaintenanceInsights() {
         {/* Tabs Content */}
         <OverviewTab />
         <TrendsTab />
+        <DealerShipsTab />
       </Tabs>
     </div>
   );

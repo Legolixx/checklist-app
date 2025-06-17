@@ -54,12 +54,7 @@ type ChartConfig = {
 
 type ModeloItem = { name: string; value: number };
 
-const chartColors = [
-  "#002C5F", // Azul principal (Hyundai / ShadCN theme)
-  "#384a78",
-  "#878dac",
-  "#d6d8e3",
-];
+const chartColors = ["#002C5F", "#384a78", "#878dac", "#d6d8e3"];
 
 const formatModelos = (data: any[]): ModeloItem[] =>
   data.map((item) => ({
@@ -241,7 +236,7 @@ export function OverviewTab() {
       )}
 
       {/* Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-slate-600">
@@ -259,6 +254,33 @@ export function OverviewTab() {
                     style: "currency",
                     currency: "BRL",
                   }).format(metrics?.valorTotalVendido || 0)}
+                </div>
+                <p className="text-xs text-slate-500 mt-1">Total</p>
+              </>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-slate-600">
+              Comissão Paga
+            </CardTitle>
+            <TrendingUp
+              className="h-4 w-4 text-purple-600"
+              aria-hidden="true"
+            />
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <div className="animate-pulse h-8 bg-gray-200 rounded"></div>
+            ) : (
+              <>
+                <div className="text-2xl font-bold text-slate-900">
+                  {new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(metrics?.comissaoMedia || 0)}
                 </div>
                 <p className="text-xs text-slate-500 mt-1">Total</p>
               </>

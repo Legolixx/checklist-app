@@ -5,7 +5,13 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CarFront, ChevronDown, ClipboardCheck, HandCoins, Search } from "lucide-react";
+import {
+  CarFront,
+  ChevronDown,
+  ClipboardCheck,
+  HandCoins,
+  Search,
+} from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -38,6 +44,18 @@ const navItems: NavItem[] = [
     title: "AS1Q",
     href: "/dashboard/as1q",
     icon: HandCoins,
+    children: [
+      {
+        title: "Controle acesso AS1Q",
+        href: "/dashboard/as1q/table",
+        icon: Search,
+      },
+      {
+        title: "AS1Q",
+        href: "/dashboard/as1q",
+        icon: ClipboardCheck,
+      },
+    ],
   },
   {
     title: "Relatórios",
