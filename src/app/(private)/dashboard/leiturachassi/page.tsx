@@ -16,7 +16,7 @@ function LeituraChassi() {
   const [erro, setErro] = useState("");
 
   const validarChassi = (value: string) => {
-    const veiculosValidos = ["H", "R", "B", "C", "G", "P"];
+    const veiculosValidos = ["H", "R", "B", "C", "G", "P", "K", "J"];
     const carroceriasValidas: {
       [key: string]: string[];
       B: string[];
@@ -25,6 +25,8 @@ function LeituraChassi() {
       P: string[];
       H: string[];
       R: string[];
+      K: string[];
+      J: string[];
     } = {
       B: ["4", "5"],
       C: ["4", "5"],
@@ -32,6 +34,8 @@ function LeituraChassi() {
       P: ["8"],
       H: ["8"],
       R: ["8"],
+      K: ["8"],
+      J: ["3"],
     };
     const motorizacoesValidas: {
       [key: string]: string[];
@@ -41,6 +45,8 @@ function LeituraChassi() {
       P: string[];
       H: string[];
       R: string[];
+      K: string[];
+      J: string[];
     } = {
       B: ["B", "C", "D"],
       C: ["A", "B", "D", "E", "F"],
@@ -48,9 +54,11 @@ function LeituraChassi() {
       P: ["B", "C", "E", "F"],
       H: ["1"],
       R: ["E"],
+      K: ["C"],
+      J: ["L"],
     };
 
-    const transmissoesValidas = ["A", "B", "G", "D"];
+    const transmissoesValidas = ["A", "B", "G", "D", "P", "X"];
     const anosValidos = [
       "T",
       "S",
@@ -90,7 +98,7 @@ function LeituraChassi() {
     if (value.length >= 10 && !anosValidos.includes(value[9])) {
       return "Ano inválido no 10º caractere do chassi.";
     }
-    return ""; // Chassi válido até o momento
+    return "";
   };
 
   const decodeChassi = async (value: string) => {
@@ -111,6 +119,8 @@ function LeituraChassi() {
       else if (veiculo === "C") result.veiculo = "Novo HB20";
       else if (veiculo === "G") result.veiculo = "Creta";
       else if (veiculo === "P") result.veiculo = "Novo Creta";
+      else if (veiculo === "K") result.veiculo = "IONIC 5";
+      else if (veiculo === "J") result.veiculo = "Tucson";
     }
 
     if (value.length >= 6) {
@@ -122,6 +132,9 @@ function LeituraChassi() {
       }
       if (veiculo === "G" || "P" || "H" || "R") {
         if (carroceria === "8") result.carroceria = "SUV";
+      }
+      if (veiculo === "J") {
+        if (carroceria === "3") result.carroceria = "SUV";
       }
     }
 
@@ -150,6 +163,10 @@ function LeituraChassi() {
         if (motorizacao === "1") result.motorizacao = "1.6 GDI HEV";
       } else if (veiculo === "R") {
         if (motorizacao === "E") result.motorizacao = "3.8 GDI";
+      } else if (veiculo === "J") {
+        if (motorizacao === "L") result.motorizacao = "1.6 T-GDI";
+      } else if (veiculo === "K") {
+        if (motorizacao === "C") result.motorizacao = "FR 70kW + RR 160kW";
       }
     }
 
@@ -159,6 +176,7 @@ function LeituraChassi() {
       else if (transmissao === "B") result.transmissao = "AT";
       else if (transmissao === "G") result.transmissao = "DCT";
       else if (transmissao === "D") result.transmissao = "AT";
+      else if (transmissao === "X") result.transmissao = "7DCT";
     }
 
     if (value.length >= 10) {
