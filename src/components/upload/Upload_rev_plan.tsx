@@ -22,7 +22,7 @@ function UploadPlanilha() {
       const ws = wb.Sheets[wsname];
       const data = XLSX.utils.sheet_to_json(ws, { header: 1 }) as any[][];
 
-      setData(data); // Salva a planilha completa (opcional)
+      setData(data);
 
       const headers = data[0];
       const registros = data.slice(1).map((row) => {

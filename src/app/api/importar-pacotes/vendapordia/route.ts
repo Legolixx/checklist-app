@@ -34,13 +34,30 @@ export async function GET(req: NextRequest) {
     };
   }
 
-  const pacotes = await prisma.pacoteManutencao.groupBy({
+  const registros = await prisma.pacoteManutencao.findMany({
     where,
-    by: ["codigo", "concessionario"],
-    _count: {
-      _all: true,
+    select: {
+      dataInicio: true,
     },
   });
 
-  return NextResponse.json({ pacotes }, { status: 200 });
+  const vendasPorDia: Record<string, number> = {};
+
+  registros.forEach((registro) => {
+    const data = new Date(registro.dataInicio);
+    const diaFormatado = data.toLocaleDateString("pt-BR");
+
+    if (vendasPorDia[diaFormatado]) {
+      vendasPorDia[diaFormatado]++;
+    } else {
+      vendasPorDia[diaFormatado] = 1;
+    }
+  });
+
+  const resultado = Object.entries(vendasPorDia).map(([dia, vendas]) => ({
+    dia,
+    vendas,
+  }));
+
+  return NextResponse.json({ vendas: resultado }, { status: 200 });
 }

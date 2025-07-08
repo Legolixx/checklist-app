@@ -16,7 +16,7 @@ model ApiToken {
 }
 
 model PacoteManutencao {
-  id                   String   @id
+  id                   String      @id
   codigo               String
   chassi               String
   comissao             Float
@@ -25,7 +25,6 @@ model PacoteManutencao {
   dataInicio           DateTime
   dataEncerramento     DateTime
   modelo               String
-  mes                  String
   notaFiscalIndividual Boolean
   pacote               String
   prazo                Int
@@ -33,28 +32,24 @@ model PacoteManutencao {
   statusComissao       String
   valor                Float
   versao               String
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-
-  // Relação
-  dealer               BASE_DEALER? @relation(fields: [codigo], references: [COD_DEALER])
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+  mes                  Int
+  DPSM                 String      @default("DPSM")
+  dealer               BASE_DEALER @relation(fields: [codigo], references: [COD_DEALER])
 }
 
-
 model BASE_DEALER {
-  COD_DEALER     String?   @unique
+  COD_DEALER     String?            @unique
   NOME_DEALER    String?
   ESTADO         String?
   GRUPO          String?
-  DIVIS_O        String?   @map("DIVISÃO")
+  DIVIS_O        String?            @map("DIVISÃO")
   STATUS         String?
   GER_REG        String?
-  xata_updatedat DateTime  @default(now()) @db.Timestamptz(6)
-  xata_id        String    @unique(map: "_pgroll_new_Base-052025DPSMDLRREGIO_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
-  xata_version   Int       @default(0)
-  xata_createdat DateTime  @default(now()) @db.Timestamptz(6)
-
-  // Relação inversa
+  xata_updatedat DateTime           @default(now()) @db.Timestamptz(6)
+  xata_id        String             @unique(map: "_pgroll_new_Base-052025DPSMDLRREGIO_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int                @default(0)
+  xata_createdat DateTime           @default(now()) @db.Timestamptz(6)
   pacotes        PacoteManutencao[]
 }
-

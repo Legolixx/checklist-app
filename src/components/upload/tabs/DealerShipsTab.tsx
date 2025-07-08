@@ -48,7 +48,6 @@ export default function DealerShipsTab() {
       if (!response.ok) throw new Error("Erro ao buscar Vendas");
 
       const data = await response.json();
-      console.log("VENDAS FILTRADAS:", data.pacotes);
       setVendas(data.pacotes);
     } catch (error) {
       console.error("Erro ao buscar Vendas", error);

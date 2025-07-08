@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
         consultor: p.CONSULTOR,
         dataInicio: parseDate(p["DATA INÍCIO"]),
         dataEncerramento: parseDate(p["DATA_ENCERRAMENTO"]),
+        DPSM: p.DPSM ,
         modelo: p.MODELO,
         mes: p["MÊS"],
         notaFiscalIndividual:
