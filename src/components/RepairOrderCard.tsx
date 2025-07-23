@@ -22,6 +22,7 @@ import {
   Package,
   User,
   Wrench,
+  AtSign,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
@@ -125,6 +126,13 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                   <div className="text-sm text-muted-foreground">
                     {order.CIDADE_CLIENTE}, {""}
                   </div>
+                </div>
+              </div>
+               <div className="flex items-start gap-2">
+                <AtSign className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-sm font-medium">Email Cliente</div>
+                  <div>{order.EMAIL_CLIENTE}</div>
                 </div>
               </div>
             </div>

@@ -33,6 +33,7 @@ export type RepairOrder = {
     SOLICITACAO_CLIENTE: string;
     QUANTIDADE_HORAS_TRABALHADAS: string;
     QUANTIDADE_HORAS_VENDIDAS: string;
+    EMAIL_CLIENTE: string;
     ProductsSet: { results: Produto[] };
     ServicesSet: { results: Servico[] };
 };
