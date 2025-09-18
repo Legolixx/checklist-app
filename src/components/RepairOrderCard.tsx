@@ -128,10 +128,23 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                   </div>
                 </div>
               </div>
-               <div className="flex items-start gap-2">
+              {order.EMAIL_OPENING && (
+                <div className="flex items-start gap-2">
+                  <AtSign className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-sm font-medium">
+                      Email Cliente Abertura
+                    </div>
+                    <div>{order.EMAIL_OPENING}</div>
+                  </div>
+                </div>
+              )}
+              <div className="flex items-start gap-2">
                 <AtSign className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-sm font-medium">Email Cliente</div>
+                  <div className="text-sm font-medium">
+                    Email Cliente Fechamento
+                  </div>
                   <div>{order.EMAIL_CLIENTE}</div>
                 </div>
               </div>

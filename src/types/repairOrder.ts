@@ -34,6 +34,7 @@ export type RepairOrder = {
     QUANTIDADE_HORAS_TRABALHADAS: string;
     QUANTIDADE_HORAS_VENDIDAS: string;
     EMAIL_CLIENTE: string;
+    EMAIL_OPENING: string;
     ProductsSet: { results: Produto[] };
     ServicesSet: { results: Servico[] };
 };

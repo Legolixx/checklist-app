@@ -11,6 +11,7 @@ import {
   ClipboardCheck,
   HandCoins,
   Search,
+  User2Icon
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -23,6 +24,18 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
+  {
+    title:"Controle Acesso",
+    href:"",
+    icon: User2Icon,
+    children: [
+      {
+        title:"Usuários",
+        href:"/dashboard/users",
+        icon: User2Icon
+      }
+    ]
+  },
   {
     title: "Consultas",
     href: "/dashboard/repairorder",
@@ -46,11 +59,6 @@ const navItems: NavItem[] = [
     icon: HandCoins,
     children: [
       {
-        title: "Controle acesso AS1Q",
-        href: "/dashboard/as1q/table",
-        icon: Search,
-      },
-      {
         title: "AS1Q",
         href: "/dashboard/as1q",
         icon: ClipboardCheck,
@@ -66,14 +74,9 @@ const navItems: NavItem[] = [
         title: "Revisões planejadas",
         href: "/dashboard/relatorios/revplanejadas",
         icon: ClipboardCheck,
-      },
-      {
-        title: "Remote Care",
-        href: "/dashboard/relatorios/servicos",
-        icon: ClipboardCheck,
-      },
+      }
     ],
-  },
+  }
 ];
 
 export function DashboardNav() {
