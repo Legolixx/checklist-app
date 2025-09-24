@@ -2,9 +2,9 @@
 import { columns } from "./usertable/columns";
 import { DataTable } from "./usertable/data-table";
 import React from "react";
+import CreateUser from "./CreateUser";
 
 async function UsersPage() {
-  console.log(`${process.env.NEXT_PUBLIC_BASE_URL2 ?? ""}/api/users`)
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL2 ?? ""}/api/users`,
     {
@@ -24,15 +24,14 @@ async function UsersPage() {
       ? new Date(u.lastSignInAt).toLocaleString()
       : "Nunca",
     imageUrl: u.imageUrl ?? u._raw?.profile_image_url ?? "",
-    status: u.banned
-    ? "Desativado"
-    : u.locked
-    ? "Bloqueado"
-    : "Ativo",
+    status: u.banned ? "Desativado" : u.locked ? "Bloqueado" : "Ativo",
   }));
 
   return (
     <div className="container mx-auto py-10">
+      <div className="flex w-full justify-end mb-4">
+        <CreateUser />
+      </div>
       <DataTable columns={columns} data={tableData} />
     </div>
   );
