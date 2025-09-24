@@ -4,6 +4,7 @@ import { DataTable } from "./usertable/data-table";
 import React from "react";
 
 async function UsersPage() {
+  console.log(`${process.env.NEXT_PUBLIC_BASE_URL2 ?? ""}/api/users`)
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL2 ?? ""}/api/users`,
     {
