@@ -53,3 +53,14 @@ model BASE_DEALER {
   xata_createdat DateTime           @default(now()) @db.Timestamptz(6)
   pacotes        PacoteManutencao[]
 }
+
+model resumo_os_por_dealer {
+  id             String   @id @default(uuid())
+  dealer         String   @unique
+  nome           String
+  total_os       Int
+  retro_os_erdat Int
+  retro_os_aedat Int
+  createdAt      DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime @updatedAt @db.Timestamptz(6)
+}

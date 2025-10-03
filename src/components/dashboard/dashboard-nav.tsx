@@ -54,13 +54,13 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    title: "AS1Q",
-    href: "/dashboard/as1q",
+    title: "Envio Retroativo",
+    href: "/dashboard/resumo_os_por_dealer",
     icon: HandCoins,
     children: [
       {
-        title: "AS1Q",
-        href: "/dashboard/as1q",
+        title: "Envio Retroativo",
+        href: "/dashboard/resumo_os_por_dealer",
         icon: ClipboardCheck,
       },
     ],
