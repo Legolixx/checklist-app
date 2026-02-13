@@ -51,7 +51,7 @@ function LeituraChassi() {
       B: ["B", "C", "D"],
       C: ["A", "B", "D", "E", "F"],
       G: ["1", "3"],
-      P: ["B", "C", "E", "F"],
+      P: ["B", "C", "E", "F", "G"],
       H: ["1"],
       R: ["E"],
       K: ["C"],
@@ -126,11 +126,11 @@ function LeituraChassi() {
     if (value.length >= 6) {
       const carroceria = value[5];
       const veiculo = value[3];
-      if (veiculo === "C" || "B") {
+      if (veiculo === "C" || veiculo === "B") {
         if (carroceria === "4") result.carroceria = "Sedan";
         else if (carroceria === "5") result.carroceria = "Hatch";
       }
-      if (veiculo === "G" || "P" || "H" || "R") {
+      if (veiculo === "G" || veiculo === "P" || veiculo === "H" || veiculo === "R") {
         if (carroceria === "8") result.carroceria = "SUV";
       }
       if (veiculo === "J") {
