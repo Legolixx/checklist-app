@@ -79,8 +79,8 @@ const accessToken = await getValidToken();
 // Configurações da API
 const URL_API =
   "https://api.hyundai-brasil.com:8065/integration/v1.1/repairorder/GetOSData";
-const START_DATE = "20250101";
-const END_DATE = "20250630";
+const START_DATE = "20250401";
+const END_DATE = "20250930";
 const DATE_FIELD = "OPENDT";
 const HEADERS: Record<string, string> = {
   Authorization: `Bearer ${accessToken}`,

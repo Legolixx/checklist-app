@@ -64,3 +64,104 @@ model resumo_os_por_dealer {
   createdAt      DateTime @default(now()) @db.Timestamptz(6)
   updatedAt      DateTime @updatedAt @db.Timestamptz(6)
 }
+
+model GerServicoList {
+  id             Int       @id
+  dealerId       Int?
+  dealerName     String?
+  dealerCode     String?
+  referenceMonth DateTime? // ex: 2024-01-01
+  status         String?
+  fetchedAt      DateTime  @default(now())
+
+  // Relacionamento 1:1
+  servico        GerServico?
+
+  @@index([referenceMonth])
+  @@index([dealerCode])
+}
+
+// Tabela principal (1 registro por concessionária/mês)
+model GerServico {
+  id                     Int      @id
+  empresaId              Int
+  empresaNome            String
+  codFabrica             String
+  data                   DateTime // mês de referência (2024-01-01T00:00:00Z)
+  status                 String
+  quickServiceInstalado  Boolean
+  quickServiceOperando   Boolean
+  dataEncerramento       DateTime?
+  dataValidacao          DateTime?
+
+  // Timestamps
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  // Relações
+  list                   GerServicoList         @relation(fields: [id], references: [id])
+  horarios               GerServicoHorario[]
+  detalhesTecnicos       GerServicoDetalheTecnico[]
+  metricas               GerServicoMetrica[]
+
+  @@index([codFabrica])
+  @@index([data])
+}
+
+// Horários de funcionamento
+model GerServicoHorario {
+  id                 Int         @id
+  gerServicoId       Int
+  gerServico         GerServico  @relation(fields: [gerServicoId], references: [id], onDelete: Cascade)
+  tipo               String      // SABADO ou SEMANA
+  entradaDia         String?
+  saidaAlmoco        String?
+  entradaAlmoco      String?
+  saidaDia           String?
+  horasTrabalhadas   String
+  quantidadeDias     Int
+
+  @@unique([id, gerServicoId])
+}
+
+// Detalhes por técnico
+model GerServicoDetalheTecnico {
+  id             Int         @id
+  gerServicoId   Int
+  gerServico     GerServico  @relation(fields: [gerServicoId], references: [id], onDelete: Cascade)
+  tipo           String
+  nomeTecnico    String
+  diaSemana      Int
+  diaSabado      Int
+  faltaSemana    Int
+  faltaSabado    Int
+  vendidas       Decimal     @db.Decimal(12, 2)
+  trabalhadas    Decimal     @db.Decimal(12, 2)
+  disponiveis    Decimal     @db.Decimal(12, 2)
+  absenteismo    Decimal     @default(0) @db.Decimal(8, 4)
+  produtividade  Decimal     @db.Decimal(12, 8)
+  eficiencia     Decimal     @db.Decimal(12, 8)
+  utilizacao     Decimal     @db.Decimal(12, 8)
+
+  @@unique([id, gerServicoId])
+}
+
+// Métricas (a mais importante pro dashboard!)
+model GerServicoMetrica {
+  id           Int         @id
+  gerServicoId Int
+  gerServico   GerServico  @relation(fields: [gerServicoId], references: [id], onDelete: Cascade)
+
+  metricaId    Int
+  titulo       String      // só PT-BR
+  subTitulo    String?
+  formato      String      // $ ou N
+  realizado    Decimal     @db.Decimal(18, 4)
+
+  // Campo derivado pra facilitar filtros no Power BI
+  categoria    String?
+
+  @@unique([id, gerServicoId])
+  @@index([titulo])
+  @@index([categoria])
+}

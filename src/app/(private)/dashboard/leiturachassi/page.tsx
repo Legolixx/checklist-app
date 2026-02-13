@@ -159,6 +159,7 @@ function LeituraChassi() {
         else if (motorizacao === "C") result.motorizacao = "2.0";
         else if (motorizacao === "E") result.motorizacao = "1.0 TGDi";
         else if (motorizacao === "F") result.motorizacao = "1.6 TGDi";
+        else if (motorizacao === "G") result.motorizacao = "1.6 TGDi FLEX";
       } else if (veiculo === "H") {
         if (motorizacao === "1") result.motorizacao = "1.6 GDI HEV";
       } else if (veiculo === "R") {
@@ -182,6 +183,7 @@ function LeituraChassi() {
     if (value.length >= 10) {
       const ano = value[9];
       const anos: { [key: string]: string } = {
+        V: "2027",
         T: "2026",
         S: "2025",
         R: "2024",

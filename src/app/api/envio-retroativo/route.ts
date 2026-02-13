@@ -55,8 +55,8 @@ const accessToken = await getValidToken();
 
 // Configurações da API
 const URL_API = "https://api.hyundai-brasil.com:8065/integration/v1.1/repairorder/GetOSData";
-const START_DATE = "20250101";
-const END_DATE = "20250630";
+const START_DATE = "20250201";
+const END_DATE = "20250831";
 const DATE_FIELD = "OPENDT";
 const HEADERS: Record<string, string> = {
   Authorization: `Bearer ${accessToken}`,
@@ -116,8 +116,6 @@ export async function GET() {
       NOME_DEALER: true,
     },
   });
-
-  console.log(dealerList)
   const resumoPorDealer: any[] = [];
 
   // Processa em lotes de 3 dealers

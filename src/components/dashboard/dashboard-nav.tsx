@@ -74,6 +74,11 @@ const navItems: NavItem[] = [
         title: "Revisões planejadas",
         href: "/dashboard/relatorios/revplanejadas",
         icon: ClipboardCheck,
+      },
+      {
+        title: "A3",
+        href: "/dashboard/relatorios/a3",
+        icon: ClipboardCheck,
       }
     ],
   }
