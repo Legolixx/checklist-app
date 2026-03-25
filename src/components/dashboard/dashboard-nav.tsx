@@ -9,9 +9,8 @@ import {
   CarFront,
   ChevronDown,
   ClipboardCheck,
-  HandCoins,
   Search,
-  User2Icon
+  User2Icon,
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -25,16 +24,16 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    title:"Controle Acesso",
-    href:"",
+    title: "Controle Acesso",
+    href: "",
     icon: User2Icon,
     children: [
       {
-        title:"Usuários",
-        href:"/dashboard/users",
-        icon: User2Icon
-      }
-    ]
+        title: "Usuários",
+        href: "/dashboard/users",
+        icon: User2Icon,
+      },
+    ],
   },
   {
     title: "Consultas",
@@ -53,35 +52,6 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  {
-    title: "Envio Retroativo",
-    href: "/dashboard/resumo_os_por_dealer",
-    icon: HandCoins,
-    children: [
-      {
-        title: "Envio Retroativo",
-        href: "/dashboard/resumo_os_por_dealer",
-        icon: ClipboardCheck,
-      },
-    ],
-  },
-  {
-    title: "Relatórios",
-    href: "/dashboard/relatorios",
-    icon: ClipboardCheck,
-    children: [
-      {
-        title: "Revisões planejadas",
-        href: "/dashboard/relatorios/revplanejadas",
-        icon: ClipboardCheck,
-      },
-      {
-        title: "A3",
-        href: "/dashboard/relatorios/a3",
-        icon: ClipboardCheck,
-      }
-    ],
-  }
 ];
 
 export function DashboardNav() {
@@ -107,7 +77,7 @@ export function DashboardNav() {
                       "flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                       isActive
                         ? "bg-accent text-accent-foreground"
-                        : "text-muted-foreground"
+                        : "text-muted-foreground",
                     )}
                   >
                     <div className="flex items-center gap-3">
@@ -117,7 +87,7 @@ export function DashboardNav() {
                     <ChevronDown
                       className={cn(
                         "h-4 w-4 transition-transform",
-                        isOpen ? "rotate-180" : "rotate-0"
+                        isOpen ? "rotate-180" : "rotate-0",
                       )}
                     />
                   </button>
@@ -128,7 +98,7 @@ export function DashboardNav() {
                       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                       isActive
                         ? "bg-accent text-accent-foreground"
-                        : "text-muted-foreground"
+                        : "text-muted-foreground",
                     )}
                   >
                     <item.icon className="h-5 w-5" />
@@ -148,7 +118,7 @@ export function DashboardNav() {
                             "flex items-center gap-2 rounded-md px-3 py-1 text-sm transition-colors hover:bg-accent hover:text-accent-foreground",
                             isChildActive
                               ? "bg-accent text-accent-foreground"
-                              : "text-muted-foreground"
+                              : "text-muted-foreground",
                           )}
                         >
                           <child.icon className="h-4 w-4" />
