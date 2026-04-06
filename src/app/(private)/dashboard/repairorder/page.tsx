@@ -25,13 +25,11 @@ export default function HomePage() {
         return;
       }
 
-       // Ordena da mais recente para a mais antiga
-    const sortedOrders = [...data.data.d.results].sort((a: RepairOrder, b: RepairOrder) => {
-      const dateA = new Date(a.DATA_ABERTURA_OS).getTime();
-      const dateB = new Date(b.DATA_ABERTURA_OS).getTime();
-      return dateB - dateA;
-    });
-
+      // Ordena da mais recente para a mais antiga
+      const sortedOrders = [...data.data.d.results].sort(
+        (a: RepairOrder, b: RepairOrder) =>
+          Number(b.DATA_ABERTURA_OS) - Number(a.DATA_ABERTURA_OS),
+      );
 
       setOrders(sortedOrders);
     } catch (error) {
