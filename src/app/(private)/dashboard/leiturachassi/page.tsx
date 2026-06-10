@@ -84,6 +84,17 @@ const VEHICLES: Record<string, VehicleConfig> = {
   },
 };
 
+const I20_CONFIG: VehicleConfig = {
+  name: "i20",
+  body: {
+    "5": "Hatch",
+  },
+  engines: {
+    E: "1.0 TGDi",
+    F: "1.0 MPI",
+  },
+};
+
 const TRANSMISSIONS: Record<string, string> = {
   A: "Manual",
   B: "AT",
@@ -93,6 +104,7 @@ const TRANSMISSIONS: Record<string, string> = {
 };
 
 const YEARS: Record<string, string> = {
+  X: "2028",
   V: "2027",
   T: "2026",
   S: "2025",
@@ -115,30 +127,35 @@ const YEARS: Record<string, string> = {
    HELPERS
 ================================ */
 
-function validarChassi(v: string) {
+function getVehicleConfig(v: string): VehicleConfig | undefined {
   const vehicle = v[3];
 
-  if (v.length >= 4 && !VEHICLES[vehicle])
-    return "Veículo inválido";
+  // Regra especial do i20
+  if (vehicle === "B" && (v[7] === "E" || v[7] === "F")) {
+    return I20_CONFIG;
+  }
 
-  if (v.length >= 6 && !VEHICLES[vehicle]?.body[v[5]])
-    return "Carroceria inválida";
+  return VEHICLES[vehicle];
+}
 
-  if (v.length >= 8 && !VEHICLES[vehicle]?.engines[v[7]])
-    return "Motorização inválida";
+function validarChassi(v: string) {
+  const config = getVehicleConfig(v);
 
-  if (v.length >= 9 && !TRANSMISSIONS[v[8]])
-    return "Transmissão inválida";
+  if (v.length >= 4 && !config) return "Veículo inválido";
 
-  if (v.length >= 10 && !YEARS[v[9]])
-    return "Ano inválido";
+  if (v.length >= 6 && !config?.body[v[5]]) return "Carroceria inválida";
+
+  if (v.length >= 8 && !config?.engines[v[7]]) return "Motorização inválida";
+
+  if (v.length >= 9 && !TRANSMISSIONS[v[8]]) return "Transmissão inválida";
+
+  if (v.length >= 10 && !YEARS[v[9]]) return "Ano inválido";
 
   return "";
 }
 
 function decodeChassi(v: string) {
-  const vehicle = v[3];
-  const config = VEHICLES[vehicle];
+  const config = getVehicleConfig(v);
 
   if (!config) return {};
 
@@ -189,9 +206,7 @@ export default function LeituraChassi() {
     }
   };
 
-  const handleChange = async (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase();
 
     setChassi(value);
@@ -223,7 +238,6 @@ export default function LeituraChassi() {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-180px)] max-w-2xl p-10 mx-auto bg-gray-100 dark:bg-gray-900 rounded-md">
-
       <form className="flex flex-col items-center gap-2 mx-auto">
         <p className="text-muted-foreground">
           Digite o chassi para descobrir o Modelo:
@@ -238,28 +252,20 @@ export default function LeituraChassi() {
         />
       </form>
 
-      {erro && (
-        <p className="text-red-500 text-center mt-3">{erro}</p>
-      )}
+      {erro && <p className="text-red-500 text-center mt-3">{erro}</p>}
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-
         {modelo.veiculo && card(Car, "Veículo", modelo.veiculo)}
 
         {modelo.carroceria && card(Car, "Carroceria", modelo.carroceria)}
 
-        {modelo.motorizacao &&
-          card(Gauge, "Motorização", modelo.motorizacao)}
+        {modelo.motorizacao && card(Gauge, "Motorização", modelo.motorizacao)}
 
-        {modelo.transmissao &&
-          card(Repeat, "Transmissão", modelo.transmissao)}
+        {modelo.transmissao && card(Repeat, "Transmissão", modelo.transmissao)}
 
-        {modelo.ano &&
-          card(Calendar, "Ano Modelo", modelo.ano)}
+        {modelo.ano && card(Calendar, "Ano Modelo", modelo.ano)}
 
-        {modelo.carName &&
-          card(Car, "CarName", modelo.carName)}
-
+        {modelo.carName && card(Car, "CarName", modelo.carName)}
       </div>
     </div>
   );
@@ -269,21 +275,15 @@ export default function LeituraChassi() {
    CARD UI HELPER
 ================================ */
 
-function card(
-  Icon: any,
-  label: string,
-  value: string
-) {
+function card(Icon: any, label: string, value: string) {
   return (
     <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 shadow rounded-xl border border-gray-200 dark:border-gray-700">
-
       <Icon className="text-blue-500" />
 
       <div>
         <p className="text-sm text-gray-500">{label}</p>
         <p className="font-semibold">{value}</p>
       </div>
-
     </div>
   );
 }
