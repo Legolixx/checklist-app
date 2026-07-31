@@ -119,3 +119,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+
+  body {
+    background: white !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  table {
+    break-inside: auto;
+  }
+
+  tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+}

@@ -21,13 +21,13 @@ export function SearchForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2 m-w-24">
       <Input
         type="text"
         placeholder="Digite o chassi"
         value={chassi}
         onChange={(e) => setChassi(e.target.value)}
-        className="w-full max-w-xs rounded-lg shadow-sm"
+        className="w-full min-w-xs rounded-lg shadow-sm"
         required
       />
       <Button type="submit" disabled={isLoading} className="flex items-center gap-2">

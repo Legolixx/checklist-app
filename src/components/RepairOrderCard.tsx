@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import dealers from "@/data/dealers.json";
 import { formatReadableDate, calculateDuration } from "@/lib/dateManipulation";
 import { RepairOrder } from "@/types/repairOrder";
 import { useState } from "react";
@@ -23,36 +22,25 @@ import {
   User,
   Wrench,
   AtSign,
+  FileTextIcon,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Button } from "./ui/button";
+import {
+  formatCurrency,
+  getDealerName,
+  getStatusDescricao,
+} from "@/lib/functions";
 
-const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
-    value
-  );
-
-function getDealerName(code: string): string {
-  const dealer = dealers.find((d) => d.code === code);
-  return dealer ? dealer.name : "Dealer Desconhecido";
-}
-
-function getStatusDescricao(status: string): string {
-  const statusMap: { [key: string]: string } = {
-    "01": "Aberta",
-    "02": "Fechada",
-    "03": "Cancelada",
-    "04": "Reaberta",
-    "99": "Abertura de OS para Recebimento de veículo",
-    "05": "Cancelamento de OS de Recebimento de veículo",
-  };
-
-  return statusMap[status] || `Status desconhecido (${status})`;
+interface RepairOrderCardProps {
+  order: RepairOrder;
+  onPrint?: () => void;
 }
 
 // Main component
-export function RepairOrderCard({ order }: { order: RepairOrder }) {
+export function RepairOrderCard({ order, onPrint }: RepairOrderCardProps) {
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(
-    {}
+    {},
   );
 
   // Agrupando por TIPO_OS
@@ -60,7 +48,7 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
     new Set([
       ...order.ProductsSet.results.map((p) => p.TIPO_OS),
       ...order.ServicesSet.results.map((s) => s.TIPO_OS),
-    ])
+    ]),
   );
 
   const toggleGroup = (type: string) => {
@@ -185,7 +173,7 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                     <span className="font-medium">Duração:</span>{" "}
                     {calculateDuration(
                       order.DATA_ABERTURA_OS,
-                      order.DATA_FECHAMENTO_OS
+                      order.DATA_FECHAMENTO_OS,
                     )}
                   </div>
                 </div>
@@ -230,10 +218,10 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
             <h3 className="font-medium text-lg">Serviços e Produtos</h3>
             {tipos.map((tipo, index) => {
               const servicos = order.ServicesSet.results.filter(
-                (s) => s.TIPO_OS === tipo
+                (s) => s.TIPO_OS === tipo,
               );
               const produtos = order.ProductsSet.results.filter(
-                (p) => p.TIPO_OS === tipo
+                (p) => p.TIPO_OS === tipo,
               );
 
               return (
@@ -309,7 +297,7 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                                     </div>
                                     <div className="col-span-2 text-right font-medium">
                                       {formatCurrency(
-                                        Number(service.VALOR_TOTAL_ITEM)
+                                        Number(service.VALOR_TOTAL_ITEM),
                                       )}
                                     </div>
                                   </div>
@@ -355,7 +343,7 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
                                     </div>
                                     <div className="col-span-2 text-right font-medium">
                                       {formatCurrency(
-                                        Number(product.VALOR_TOTAL_ITEM)
+                                        Number(product.VALOR_TOTAL_ITEM),
                                       )}
                                     </div>
                                   </div>
@@ -376,6 +364,12 @@ export function RepairOrderCard({ order }: { order: RepairOrder }) {
             })}
           </div>
         </CardContent>
+        <div className="flex items-center justify-end px-6">
+          <Button size="lg" variant="outline" onClick={onPrint}>
+            <FileTextIcon />
+            Exportar PDF
+          </Button>
+        </div>
       </Card>
     </div>
   );

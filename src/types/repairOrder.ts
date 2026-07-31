@@ -19,6 +19,7 @@ export type Servico = {
 export type RepairOrder = {
     CODIGO_OS: string;
     MODELO: string;
+    CHASSI: string;
     DEALER_CODE: string;
     DATA_ABERTURA_OS: string;
     DATA_FECHAMENTO_OS: string;
